@@ -31,7 +31,7 @@ ATV.start({
   menu: {
     items: [{
       id: 'home',
-      name: 'Výběry',
+      name: 'Domů',
       page: HomePage,
       attributes: { autoHighlight: true, reloadOnSelect: true }
     }, {
