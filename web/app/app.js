@@ -13,7 +13,6 @@ import errorTpl from 'shared/templates/error.hbs'
 
 // pages
 import HomePage from 'pages/home'
-import AlphabetPage from 'pages/alphabet'
 import DatesPage from 'pages/dates'
 import GenresPage from 'pages/genres'
 import FavoritesPage from 'pages/favorites'
@@ -34,10 +33,6 @@ ATV.start({
       name: 'Domů',
       page: HomePage,
       attributes: { autoHighlight: true, reloadOnSelect: true }
-    }, {
-      id: 'alphabet',
-      name: 'Podle abecedy',
-      page: AlphabetPage
     }, {
       id: 'dates',
       name: 'Podle data',
