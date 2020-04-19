@@ -14,7 +14,6 @@ import errorTpl from 'shared/templates/error.hbs'
 // pages
 import HomePage from 'pages/home'
 import DatesPage from 'pages/dates'
-import GenresPage from 'pages/genres'
 import FavoritesPage from 'pages/favorites'
 import LivePage from 'pages/live'
 
@@ -38,17 +37,12 @@ ATV.start({
       name: 'Podle data',
       page: DatesPage,
       attributes: { reloadOnSelect: true }
-    }, /*, {            id: 'genres',
-            name: 'Podle žánru',
-            page: GenresPage
-        } */
-    {
+    },{
       id: 'favorites',
       name: 'Oblíbené',
       page: FavoritesPage,
       attributes: { reloadOnSelect: true }
-    },
-    {
+    },{
       id: 'live',
       name: 'Živé vysílání',
       page: LivePage,
