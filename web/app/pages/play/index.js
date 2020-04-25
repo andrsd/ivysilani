@@ -2,12 +2,17 @@ import ATV from 'atvjs'
 import fastXmlParser from 'fast-xml-parser'
 
 import API from 'lib/ivysilani.js'
+import History from 'lib/history.js'
 
 // const _ = ATV._;
+
+var programme_id = null
 
 const PlayPage = ATV.Page.create({
   name: 'play',
   ready (options, resolve, reject) {
+    programme_id = options.ID
+
     /* let getVideoUrl = ATV.Ajax.get(API.url.videoUrl({id: options.ID,qualities: `{"VOD":"max1080p","LIVE":"max720p"}`}));
     playerType = flash, ios, iPad je to same - m3u8 playlist s ruznymi kvalitami
     playerType = progressive je jako HbbTV. Dava primo video. v tvOS to vyusti, ze prehravac ma thumbnaily na timeline
@@ -77,6 +82,16 @@ const PlayPage = ATV.Page.create({
           if (key == 0) {
             player.playlist = tvosPlaylist
             player.play()
+            History.set(programme_id, 0.5)
+
+            player.addEventListener('mediaItemWillChange', function(e) {
+              History.set(programme_id, 1.)
+            })
+            player.addEventListener('stateDidChange', function(stateObj) {
+              if (stateObj.state == 'end') {
+                History.set(programme_id, 1.)
+              }
+            })
           }
         })
 

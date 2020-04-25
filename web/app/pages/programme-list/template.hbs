@@ -13,6 +13,7 @@
             <section>
                 {{#each episodes }}
                 <listItemLockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                    <ordinal minLength="3" style="padding: 10 15">{{{watchedState watched }}}</ordinal>
                     <title>{{ title }}</title>
                     <relatedContent>
                         <lockup>

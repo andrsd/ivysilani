@@ -22,7 +22,15 @@ const helpers = {
   },
   fullImageURL (imageURL) {
     return new Handlebars.SafeString(imageURL)
-  }
+  },
+  watchedState (state) {
+    if (state == 0)
+      return "&#9673;"
+    else if (state < 1)
+      return "&#9686;"
+    else
+      return "&#8194;"
+  },
 }
 
 // register all helpers

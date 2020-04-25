@@ -22,6 +22,7 @@ import DatesDatePage from 'pages/dates-date'
 import ProgrammeListPage from 'pages/programme-list'
 
 import ProgrammeDetailsPage from 'pages/programme-details'
+import ProgrammeContextMenuPage from 'pages/programme-context-menu'
 import PlayPage from 'pages/play'
 
 ATV.start({
