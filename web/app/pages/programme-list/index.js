@@ -80,26 +80,5 @@ var AlphabetLetterPage = ATV.Page.create({
       .addEventListener('select', changeFavorites)
   }
 })
-/*
-        // get the unique id of the asset
-        let letterLink = options.link;
-
-        // load data and then resolve promise
-        ATV.Ajax
-        //.get(API.listLetter(letterLink))
-            .get('http://hd-tech.cz/most.php?url=http://hbbtv.ceskatelevize.cz/ivysilani/services/letter.php?letter=a')
-            .then((xhr) => {
-                let shows = xhr.response;
-
-                resolve({
-                    shows: shows.programme
-                });
-            }, (xhr) => {
-                // error
-                reject();
-            });
-        // for demo using static content
-//      resolve(staticData());
-        */
 
 export default AlphabetLetterPage

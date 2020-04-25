@@ -7,13 +7,10 @@
             <grid>
                 <section>
                     {{#each favorites }}
-                                <lockup data-href-page="programme-list" data-href-page-options="{{toJSON this}}">
-                                    <img class="darkImage" src="{{fullImageURL showInfo.imageURL}}" style="width:544; height:306;"/>
-                                    <overlay>
-                                        <title class="showAndScrollTextOnHighlight">{{ title }}</title>
-                                        <!-- <text class="overlayTextLayout">{{live.programme.channelTitle}}</text> -->
-                                    </overlay>
-                                </lockup>
+                    <lockup data-href-page="programme-list" data-href-page-options="{{toJSON this}}">
+                        <img class="darkImage" src="{{fullImageURL showInfo.imageURL}}" style="width:544; height:306;"/>
+                        <title>{{ title }}</title>
+                    </lockup>
                     {{/each}}
                 </section>
             </grid>

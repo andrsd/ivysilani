@@ -1,90 +1,84 @@
 <document>
     <stackTemplate>
         <banner>
-            <title>Podle data - {{ dateInfo.title }}</title>
+            <title>Pořady podle data - {{ dateInfo.title }}</title>
         </banner>
         <collectionList>
             <shelf>
-                <header><title>ČT1</title></header>
+                <header>
+                  <title>ČT1</title>
+                </header>
                 <section>
                     {{#each dateCT1 }}
-                        <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
-                            <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
-                            <overlay>
-                                <title class="showAndScrollTextOnHighlight">{{ title }}</title>
-                                <text class="overlayTextLayout">{{ time }}</text>
-                            </overlay>
-                        </lockup>
+                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                        <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
+                        <title>{{ time }}: {{ title }}</title>
+                    </lockup>
                     {{/each}}
                 </section>
             </shelf>
             <shelf>
-                <header><title>ČT2</title></header>
+                <header>
+                  <title>ČT2</title>
+                </header>
                 <section>
                     {{#each dateCT2 }}
-                        <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
-                            <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
-                            <overlay>
-                                <title class="showAndScrollTextOnHighlight">{{ title }}</title>
-                                <text class="overlayTextLayout">{{ time }}</text>
-                            </overlay>
-                        </lockup>
+                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                        <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
+                        <title>{{ time }}: {{ title }}</title>
+                    </lockup>
                     {{/each}}
                 </section>
             </shelf>
             <shelf>
-                <header><title>ČT24</title></header>
+                <header>
+                  <title>ČT24</title>
+                </header>
                 <section>
                     {{#each dateCT24 }}
-                        <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
-                            <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
-                            <overlay>
-                                <title class="showAndScrollTextOnHighlight">{{ title }}</title>
-                                <text class="overlayTextLayout">{{ time }}</text>
-                            </overlay>
-                        </lockup>
+                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                        <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
+                        <title>{{ time }}: {{ title }}</title>
+                    </lockup>
                     {{/each}}
                 </section>
             </shelf>
             <shelf>
-                <header><title>ČT Sport</title></header>
+                <header>
+                  <title>ČT Sport</title>
+                </header>
                 <section>
                     {{#each dateCTSport }}
-                        <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
-                            <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
-                            <overlay>
-                                <title class="showAndScrollTextOnHighlight">{{ title }}</title>
-                                <text class="overlayTextLayout">{{ time }}</text>
-                            </overlay>
-                        </lockup>
+                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                        <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
+                        <title>{{ time }}: {{ title }}</title>
+                    </lockup>
                     {{/each}}
                 </section>
             </shelf>
             <shelf>
-                <header><title>ČT:D</title></header>
+                <header>
+                  <title>ČT:D</title>
+                </header>
                 <section>
                     {{#each dateCTD }}
-                        <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
-                            <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
-                            <overlay>
-                                <title class="showAndScrollTextOnHighlight">{{ title }}</title>
-                                <text class="overlayTextLayout">{{ time }}</text>
-                            </overlay>
-                        </lockup>
+                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                        <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
+                        <title>{{ time }}: {{ title }}</title>
+                    </lockup>
                     {{/each}}
                 </section>
             </shelf>
             <shelf>
-                <header><title>ČT Art</title></header>
+                <header>
+                  <title>ČT Art</title>
+                </header>
                 <section>
                     {{#each dateCTArt }}
-                        <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
-                            <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
-                            <overlay>
-                                <title class="showAndScrollTextOnHighlight">{{ title }}</title>
-                                <text class="overlayTextLayout">{{ time }}</text>
-                            </overlay>
-                        </lockup>
+                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                        <img class="tile darkImage" src="{{ fullImageURL imageURL }}"/>
+                        <title>{{ time }}: {{ title }}</title>
+                    </lockup>
                     {{/each}}
                 </section>
             </shelf>

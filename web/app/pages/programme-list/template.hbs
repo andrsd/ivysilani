@@ -10,17 +10,13 @@
             </buttonLockup>
         </banner>
         <list>
-            <!-- <header>
-                <title>Epizody</title>
-            </header> -->
             <section>
                 {{#each episodes }}
-                <listItemLockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
+                <listItemLockup data-href-page="play" data-href-page-options="{{toJSON this }}">
                     <title>{{ title }}</title>
                     <relatedContent>
                         <lockup>
                             <img src="{{ fullImageURL imageURL }}" />
-                            <title>{{ title }}</title>
                             <description>{{ synopsis }}</description>
                         </lockup>
                     </relatedContent>
@@ -28,11 +24,11 @@
                 {{/each}}
                 {{#if paging }}
                 <listItemLockup data-href-page="programme-list" data-href-page-options="{{ toJSON this }}">
-                    <title>Další</title>
+                    <title>Další...</title>
                     <relatedContent>
                         <lockup>
                             <img src="" />
-                            <title>Další</title>
+                            <title></title>
                             <description></description>
                         </lockup>
                     </relatedContent>
