@@ -17,7 +17,6 @@ var AlphabetLetterPage = ATV.Page.create({
     holdselect: 'onHoldSelect'
   },
   ready: function (options, resolve, reject) {
-    // ATV.Navigation.showLoading({data : {message: 'Načítání'}});
     // Paging support
     let currentPage
     let pageSize = 20
@@ -26,23 +25,38 @@ var AlphabetLetterPage = ATV.Page.create({
     // Když přicestuji z programme-details kliknutim na dalsi epizody
     if ('SIDP' in options) { options.ID = options.SIDP }
 
-    let getProgrammeList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions(
-      {
+    let getProgrammeList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({
         ID: showInfo.ID,
         'paging[episodes][currentPage]': currentPage,
         'paging[episodes][pageSize]': pageSize,
         'type[0]': 'episodes',
         'type[1]': 'related',
         'type[2]': 'bonuses'
-      }
-    ))
+      }))
+
+    var promises = [ getProgrammeList ]
+    if ('ID' in options) {
+      let getProgrammeDetails = ATV.Ajax.post(API.url.programmeDetails, API.xhrOptions({ID: options.ID}))
+      promises.push(getProgrammeDetails)
+    }
 
     // Then resolve them at once
     // Old template {{{programmeImg ../showInfo.ID ID}}}
     Promise
-      .all([getProgrammeList])
+      .all(promises)
       .then((xhrs) => {
         let programmeList = fastXmlParser.parse(xhrs[0].response).programmes
+        let programmeDetails
+        if (xhrs.length > 1) {
+          programmeDetails = fastXmlParser.parse(xhrs[1].response).programme
+          if (programmeDetails.description.length == 0) {
+            programmeDetails.description = options.synopsis
+          }
+        }
+        else {
+          programmeDetails = null
+        }
+
         console.log(programmeList)
         // console.log(xhrs[0].response)
 
@@ -65,8 +79,11 @@ var AlphabetLetterPage = ATV.Page.create({
 
         resolve({
           ratedState: ratedState,
+          details: programmeDetails,
+          related: programmeList.related.programme,
           showInfo: showInfo,
           paging: programmeList.episodes.paging,
+          single: programmeList.episodes.programme.length == 1,
           episodes: programmeList.episodes.programme
         })
       }, (xhr) => {
