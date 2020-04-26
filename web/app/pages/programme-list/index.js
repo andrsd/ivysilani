@@ -13,6 +13,7 @@ var AlphabetLetterPage = ATV.Page.create({
   name: 'programme-list',
   template: template,
   events: {
+    highlight: 'onHighlight',
     holdselect: 'onHoldSelect'
   },
   ready: function (options, resolve, reject) {
@@ -87,6 +88,17 @@ var AlphabetLetterPage = ATV.Page.create({
     doc
       .getElementById('favButton')
       .addEventListener('select', changeFavorites)
+  },
+  onHighlight(e) {
+    let element = e.target
+    let elementType = element.nodeName
+
+    if (elementType === 'listItemLockup') {
+      var ph = element.getElementsByTagName("placeholder").item(0)
+
+      var doc = getActiveDocument()
+      doc.getElementById('description').innerHTML = ph.innerHTML
+    }
   },
   onHoldSelect(e) {
     let element = e.target

@@ -1,41 +1,36 @@
 <document>
-    <listTemplate theme="dark">
-        <background>
-            <heroImg src="{{fullImageURL showInfo.imageURL}}" />
-        </background>
-        <banner>
-            <title>{{ showInfo.title }}</title>
-            <buttonLockup id="favButton" style="tv-position: right;margin-left: 100">
-                <badge src="{{ ratedState }}" />
+  <compilationTemplate>
+    <list>
+      <relatedContent>
+        <itemBanner>
+          <heroImg src="{{fullImageURL showInfo.imageURL}}" />
+          <description id="description" style="tv-text-max-lines: 2"></description>
+          <row>
+            <buttonLockup id="favButton" style="tv-position: right; margin-left: 100">
+              <badge src="{{ ratedState }}" />
             </buttonLockup>
-        </banner>
-        <list>
-            <section>
-                {{#each episodes }}
-                <listItemLockup data-href-page="play" data-href-page-options="{{toJSON this }}">
-                    <ordinal minLength="3" style="padding: 10 15">{{{watchedState watched }}}</ordinal>
-                    <title>{{ title }}</title>
-                    <relatedContent>
-                        <lockup>
-                            <img src="{{ fullImageURL imageURL }}" />
-                            <description>{{ synopsis }}</description>
-                        </lockup>
-                    </relatedContent>
-                </listItemLockup>
-                {{/each}}
-                {{#if paging }}
-                <listItemLockup data-href-page="programme-list" data-href-page-options="{{ toJSON this }}">
-                    <title>Další...</title>
-                    <relatedContent>
-                        <lockup>
-                            <img src="" />
-                            <title></title>
-                            <description></description>
-                        </lockup>
-                    </relatedContent>
-                </listItemLockup>
-                {{/if}}
-            </section>
-        </list>
-    </listTemplate>
+          </row>
+        </itemBanner>
+      </relatedContent>
+      <header>
+        <title>{{ showInfo.title }}</title>
+      </header>
+      <section>
+        {{#each episodes }}
+        <listItemLockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+          <ordinal minLength="2">{{{watchedState watched }}}</ordinal>
+          <title>{{ title }}</title>
+          <placeholder>{{ synopsis }}</placeholder>
+        </listItemLockup>
+        {{/each}}
+      </section>
+      {{#if paging }}
+      <section>
+        <listItemLockup data-href-page="programme-list" data-href-page-options="{{ toJSON this }}">
+          <title>Další...</title>
+        </listItemLockup>
+      </section>
+      {{/if}}
+    </list>
+  </compilationTemplate>
 </document>
