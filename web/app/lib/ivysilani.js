@@ -61,6 +61,7 @@ const generateDates = () => {
     data.push({
       date: `${yyyy}-${mm < 10 ? (`0${mm}`) : mm}-${dd + 1 < 10 ? (`0${dd}`) : dd}`,
       title: `${dd}.${mm}.${yyyy}`,
+      short_title: date.toLocaleDateString('cs-CZ', { month: 'long', year: 'numeric'}),
       poster_path: `img/dates/${dd}.lcr`
     })
   }
