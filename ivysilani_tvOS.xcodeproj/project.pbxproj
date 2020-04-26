@@ -87,7 +87,6 @@
 		02F6C2E9244BC4A300EFD61E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02F6C2F8244BC7BF00EFD61E /* GCDWebServers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCDWebServers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		02F6C2FA244BC7BF00EFD61E /* GCDWebServers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDWebServers.h; sourceTree = "<group>"; };
-		02F6C2FB244BC7BF00EFD61E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02F6C308244BC7D900EFD61E /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		02F6C30D244BC7F600EFD61E /* GCDWebServerFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerFunctions.h; sourceTree = "<group>"; };
 		02F6C30E244BC7F600EFD61E /* GCDWebServerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerPrivate.h; sourceTree = "<group>"; };
@@ -188,7 +187,6 @@
 				02F6C319244BC7F600EFD61E /* Responses */,
 				02F6C308244BC7D900EFD61E /* module.modulemap */,
 				02F6C2FA244BC7BF00EFD61E /* GCDWebServers.h */,
-				02F6C2FB244BC7BF00EFD61E /* Info.plist */,
 			);
 			path = GCDWebServers;
 			sourceTree = "<group>";
@@ -562,6 +560,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y8G529976F;
 				INFOPLIST_FILE = ivysilani_tvOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -581,6 +580,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y8G529976F;
 				INFOPLIST_FILE = ivysilani_tvOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -626,7 +626,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3.5.4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Y8G529976F;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -639,6 +639,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = name.andrs.tvos.GCDWebServers;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -652,7 +653,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3.5.4;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = Y8G529976F;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -665,6 +666,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 3.5.4;
 				PRODUCT_BUNDLE_IDENTIFIER = name.andrs.tvos.GCDWebServers;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
