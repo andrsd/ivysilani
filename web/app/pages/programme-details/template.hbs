@@ -1,54 +1,112 @@
 <document>
-    <productTemplate>
-        <banner>
-            <infoList>
-                <info>
-                    <header>
-                        <title>Délka</title>
-                    </header>
-                    <text>{{ details.footage }} minut</text>
-                </info>
-                <info>
-                    <header>
-                        <title>Premiéra</title>
-                    </header>
-                    <text>{{ details.datePremiere }}</text>
-                    <text>{{ details.channelPremiere }}</text>
-                </info>
-            </infoList>
-            <stack>
-                <title style="tv-text-style: title3;">{{ details.title }}</title>
-                <text style="tv-text-style: headline; margin: 0;">{{ details.partTitle }}</text>
-                <row>
-                    <ratingBadge value="{{details.ratingFloat}}"></ratingBadge>
-                    <text>{{ details.ratingPercentage }}%</text>
-                </row>
-                <description allowsZooming="true" moreLabel="more">{{ details.description }}</description>
-                <row>
-                    <buttonLockup data-href-page="play" data-href-page-options="{{toJSON details }}">
-                        <badge src="resource://button-play"/>
-                        <title>Přehrát</title>
-                    </buttonLockup>
-                    <buttonLockup data-href-page="programme-list" data-href-page-options="{{toJSON details }}">
-                        <badge src="resource://list-chevron"/>
-                        <title>Další epizody</title>
-                    </buttonLockup>
-                </row>
-            </stack>
-            <heroImg src="{{ fullImageURL details.imageURL }}" style="margin-left: 0; width: 544;"/>
-        </banner>
-        <shelf>
-            <header>
-                <title>Související pořady</title>
-            </header>
-            <section>
-                {{#each related }}
-                <lockup data-href-page="programme-list" data-href-page-options="{{toJSON this }}">
-                    <img src="{{ fullImageURL imageURL }}" width="384" height="216" />
-                    <title>{{ title }}</title>
-                </lockup>
-                {{/each}}
-            </section>
-        </shelf>
-    </productTemplate>
+  <productTemplate>
+    <banner>
+      <infoList>
+        {{#if details.genres}}
+        <info>
+          <header>
+            <title>Žánr</title>
+          </header>
+          {{#each details.genres}}
+          <text>{{ name }}</text>
+          {{/each}}
+        </info>
+        {{/if}}
+        {{#each details.crew}}
+        <info>
+          <header>
+            <title>{{ job }}</title>
+          </header>
+          {{#each names}}
+          <text>{{ this }}</text>
+          {{/each}}
+        </info>
+        {{/each}}
+      </infoList>
+      <stack>
+        <title style="tv-text-style: title3;">{{ details.title }}</title>
+        <row>
+          <text>{{ details.runtime }}</text>
+          <text>{{ details.release_year }}</text>
+        </row>
+        <description allowsZooming="true" moreLabel="more">{{ details.description }}</description>
+        <row>
+          <buttonLockup data-href-page="play" data-href-page-options="{{toJSON ctdetails }}">
+            <badge src="resource://button-play"/>
+            <title>Přehrát</title>
+          </buttonLockup>
+        </row>
+      </stack>
+      <heroImg src="{{{ details.poster_path }}}" style="width: 544;"/>
+    </banner>
+    <shelf>
+      <header>
+        <title>Související pořady</title>
+      </header>
+      <section>
+        {{#each related }}
+        <lockup data-href-page="programme-list" data-href-page-options="{{toJSON this }}">
+          <img src="{{ fullImageURL imageURL }}" width="384" height="216" />
+          <title>{{ title }}</title>
+        </lockup>
+        {{/each}}
+      </section>
+    </shelf>
+    {{#if details.cast}}
+    <shelf>
+      <header>
+        <title>Obsazení</title>
+      </header>
+      <section>
+        {{#each details.cast}}
+        <monogramLockup>
+          {{#if profile_path}}
+          <monogram src="{{{ profile_path }}}"/>
+          {{else}}
+          <monogram />
+          {{/if}}
+          <title>{{ character }}</title>
+          <subtitle>{{ name }}</subtitle>
+        </monogramLockup>
+        {{/each}}
+      </section>
+    </shelf>
+    {{/if}}
+    <productInfo>
+      {{#if info}}
+      <infoTable>
+        <header>
+          <title>Informace</title>
+        </header>
+        {{#each info}}
+        <info>
+          <header>
+            <title>{{ title }}</title>
+          </header>
+          {{#each values}}
+          <text>{{ this }}</text>
+          {{/each}}
+        </info>
+        {{/each}}
+      </infoTable>
+      {{/if}}
+      {{#if languages}}
+      <infoTable>
+        <header>
+          <title>&#8194;</title>
+        </header>
+        {{#each languages}}
+        <info>
+          <header>
+            <title>{{ title }}</title>
+          </header>
+          {{#each values}}
+          <text>{{ this }}</text>
+          {{/each}}
+        </info>
+        {{/each}}
+      </infoTable>
+      {{/if}}
+    </productInfo>
+  </productTemplate>
 </document>

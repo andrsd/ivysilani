@@ -3,6 +3,7 @@ import fastXmlParser from 'fast-xml-parser'
 
 import template from './template.hbs'
 import API from 'lib/ivysilani.js'
+import TMDB from 'lib/TMDB.js'
 
 const _ = ATV._
 
@@ -10,62 +11,159 @@ var ProgrammeDetailsPage = ATV.Page.create({
   name: 'programme-details',
   template: template,
   ready: function (options, resolve, reject) {
-    // get data from multiple requests
-    // ATV.Navigation.showLoading({data : {message: 'Načítání'}});
+    var title = options.title
+    var m = title.match(/(.*)(:\s*\d+\.\s*\d+\.\s*\d+)/)
+    if (m != null) {
+      title = m[1]
+    }
 
-    // let getProgrammeDetails = ATV.Ajax.get(API.programmeDetails(options.ID));
-    let getProgrammeDetails = ATV.Ajax.post(API.url.programmeDetails, API.xhrOptions({ID: options.ID}))
-    // let getRelatedList = ATV.Ajax.get(API.relatedList(options.ID));
-    let getRelatedList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions(
-      {
-        ID: options.ID,
-        'type[0]': 'related'
-      }
-    ))
-    // Then resolve them at once
-    Promise
-      .all([getProgrammeDetails, getRelatedList])
-      .then((xhrs) => {
-        // Modifikace detailů
-        let details = fastXmlParser.parse(xhrs[0].response).programme
+    ATV.Ajax
+      .get(TMDB.url.searchMovie(title))
+      .then((res) => {
+        let getProgrammeDetails = ATV.Ajax.post(API.url.programmeDetails, API.xhrOptions({ID: options.ID}))
+        let getRelatedList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({
+          ID: options.ID,
+          'type[0]': 'related'
+        }))
 
-        if (_.isEmpty(details.description)) { details.description = 'Tento pořad nemá žádný popisek' };
-        details.ratingFloat = details.ratingPercentage / 100
-        if (_.isEmpty(details.partTitle)) { details.partTitle = details.datePremiere };
+        if (res.response.total_results == 1) {
+          var id = res.response.results[0].id
+          return Promise.all([
+            getProgrammeDetails,
+            getRelatedList,
+            ATV.Ajax.get(TMDB.url.movieDetails(id))
+          ])
+        }
+        else {
+          return Promise.all([
+            getProgrammeDetails,
+            getRelatedList
+          ])
+        }
+      }, (res) => {
+        resolve(false)
+      })
+      .then((res) => {
+        let ctdetails = fastXmlParser.parse(res[0].response).programme
+        let related = fastXmlParser.parse(res[1].response).programmes.related.programme
+        var details = {}
+        var info = []
+        var languages = []
 
-        // Modifikace souvisejících
-        let related = fastXmlParser.parse(xhrs[1].response).programmes
+        if (res.length == 3) {
+          var tmdb = res[2].response
+          details.title = tmdb.original_title
+          details.description = tmdb.overview
+          details.poster_path = ''
+          details.poster_path = TMDB.imageUrl(tmdb.poster_path)
+
+          if (tmdb.genres.length > 0) {
+            details.genres = tmdb.genres
+          }
+
+          var release_date = new Date(tmdb.release_date)
+          details.release_year = release_date.getFullYear()
+
+          info.push({
+            title: 'Vydáno',
+            values: [ release_date.toLocaleString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' }) ]
+          })
+
+          // runtime
+          var hh = Math.floor(tmdb.runtime / 60)
+          var mm = tmdb.runtime % 60
+          if (hh > 0)
+            details.runtime = `${hh}h ${mm}min`
+          else
+            details.runtime = `${mm}min`
+          info.push({
+            title: 'Délka',
+            values: [ `${hh}:${mm}` ]
+          })
+
+          if (tmdb.production_companies.length > 0) {
+            var studios = []
+            for (var c of tmdb.production_companies) {
+              studios.push(c.name)
+            }
+            info.push({
+              title: 'Studio',
+              values: studios
+            })
+          }
+
+          if (tmdb.spoken_languages.length > 0) {
+            var langs = []
+            for (var l of tmdb.spoken_languages) {
+              langs.push(l.name)
+            }
+
+            languages.push({
+              title: 'Jazyky',
+              values: langs
+            })
+          }
+
+          var credits = tmdb.credits
+          if (credits.crew) {
+            details.crew = []
+
+            var directors = []
+            for (var i of credits.crew) {
+              if (i.job.toLowerCase() == 'director') {
+                directors.push(i.name)
+              }
+            }
+            details.crew.push({
+              job: 'Režie',
+              names: directors
+            })
+          }
+
+          if (credits.cast) {
+            details.cast = credits.cast
+            for (var i of details.cast) {
+              i.profile_path = TMDB.imageUrl(i.profile_path)
+            }
+          }
+        }
+        else {
+          details.title = ctdetails.title
+          if (_.isEmpty(ctdetails.description)) {
+            details.description = 'Tento pořad nemá žádný popisek'
+          }
+          else {
+            details.description = ctdetails.description
+          }
+
+          details.poster_path = ctdetails.imageURL
+
+          var release_date = new Date(ctdetails.timeStampPremiere * 1000)
+          details.release_year = release_date.getFullYear()
+
+          // runtime
+          var hh = Math.floor(ctdetails.footage / 60)
+          var mm = ctdetails.footage % 60
+          if (hh > 0)
+            details.runtime = `${hh}h ${mm}min`
+          else
+            details.runtime = `${mm}min`
+          info.push({
+            title: 'Délka',
+            values: [ `${hh}:${mm}` ]
+          })
+        }
 
         resolve({
           details: details,
-          related: related.related.programme
+          ctdetails: ctdetails,
+          info: info,
+          related: related,
+          languages: languages
         })
-      }, (xhr) => {
-        // error
-        reject()
+      }, (res) => {
+        resolve(false)
       })
-
-    /*
-                // get the unique id of the asset
-                let letterLink = options.link;
-
-                // load data and then resolve promise
-                ATV.Ajax
-                //.get(API.listLetter(letterLink))
-                    .get('http://hd-tech.cz/most.php?url=http://hbbtv.ceskatelevize.cz/ivysilani/services/letter.php?letter=a')
-                    .then((xhr) => {
-                        let shows = xhr.response;
-
-                        resolve({
-                            shows: shows.programme
-                        });
-                    }, (xhr) => {
-                        // error
-                        reject();
-                    });
-                // for demo using static content
-        //      resolve(staticData());
-                */
   }
 })
 
