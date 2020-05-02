@@ -1,20 +1,17 @@
 <document>
     <stackTemplate>
-        <identityBanner>
-            <badge src="{{{asset_url 'img/ivysilani.png'}}}" class="appLogo" />
-        </identityBanner>
         <collectionList>
-            <carousel>
+            <shelf style="margin-top: 595">
                 <section>
                     {{#each tipsMain }}
                     <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
-                        <img src="{{ fullImageURL imageURL }}" class="darkImage" style="width:768; height:432;" />
+                        <img src="{{ fullImageURL imageURL }}" class="tile" />
                         <title style="align: left">{{ title }}</title>
                         <subtitle style="align: left">{{ note }}</subtitle>
                     </lockup>
                     {{/each}}
                 </section>
-            </carousel>
+            </shelf>
             <shelf>
                 <header>
                   <title>Nejsledovanější videa dne</title>
