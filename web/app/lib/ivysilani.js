@@ -52,16 +52,27 @@ const xhrOptions = (params) => {
 
 const generateDates = () => {
   const data = []
-  for (let i = 0; i <= 30; i += 1) {
+  for (let i = 0; i < 14; i += 1) {
     const date = new Date()
     date.setDate(date.getDate() - i)
     const dd = date.getDate()
     const mm = date.getMonth() + 1 // January is 0!
     const yyyy = date.getFullYear()
+
+    var short_title
+    if (i == 0) {
+      short_title = "Dnes"
+    }
+    else if (i == 1) {
+      short_title = "Včera"
+    }
+    else {
+      short_title = `${dd}. ${mm}. ${yyyy}`
+    }
     data.push({
       date: `${yyyy}-${mm < 10 ? (`0${mm}`) : mm}-${dd + 1 < 10 ? (`0${dd}`) : dd}`,
-      title: `${dd}.${mm}.${yyyy}`,
-      short_title: date.toLocaleDateString('cs-CZ', { month: 'long', year: 'numeric'}),
+      title: `${dd}. ${mm}. ${yyyy}`,
+      short_title: short_title,
       poster_path: `img/dates/${dd}.lcr`
     })
   }

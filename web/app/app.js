@@ -35,7 +35,7 @@ ATV.start({
       attributes: { autoHighlight: true, reloadOnSelect: true }
     }, {
       id: 'dates',
-      name: 'Podle data',
+      name: 'Program',
       page: DatesPage,
       attributes: { reloadOnSelect: true }
     },{
