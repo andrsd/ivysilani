@@ -4,7 +4,7 @@
             <shelf style="margin-top: 595">
                 <section>
                     {{#each tipsMain }}
-                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                    <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
                         <img src="{{ fullImageURL imageURL }}" class="tile" />
                         <title style="align: left">{{ title }}</title>
                         <subtitle style="align: left">{{ note }}</subtitle>
@@ -18,7 +18,7 @@
                 </header>
                 <section>
                     {{#each tipsToday }}
-                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                    <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
                         <img class="tile" src="{{ fullImageURL imageURL }}"/>
                         <title>{{ title }}</title>
                     </lockup>
@@ -31,7 +31,7 @@
                 </header>
                 <section>
                     {{#each tipsWeek }}
-                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                    <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
                         <img class="tile" src="{{ fullImageURL imageURL }}"/>
                         <title>{{ title }}</title>
                     </lockup>
@@ -44,7 +44,7 @@
                 </header>
                 <section>
                     {{#each tipsNote }}
-                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                    <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
                         <img class="tile" src="{{ fullImageURL imageURL }}"/>
                         <title>{{ title }}</title>
                     </lockup>
@@ -57,7 +57,7 @@
                 </header>
                 <section>
                     {{#each tipsArchive }}
-                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                    <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
                         <img class="tile" src="{{ fullImageURL imageURL }}"/>
                         <title>{{ title }}</title>
                     </lockup>
@@ -70,7 +70,7 @@
                 </header>
                 <section>
                     {{#each tipsWatching }}
-                    <lockup data-href-page="play" data-href-page-options="{{toJSON this }}">
+                    <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
                         <img class="tile" src="{{ fullImageURL imageURL }}"/>
                         <title>{{ title }}</title>
                     </lockup>
