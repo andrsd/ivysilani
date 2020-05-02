@@ -1,14 +1,11 @@
 <document>
     <stackTemplate>
-        <banner>
-            <title>Živé vysílání</title>
-        </banner>
         <collectionList>
-            <grid>
+            <shelf style="margin-top:445">
                 <section>
                     {{#each channels }}
                     <lockup data-href-page="play" data-href-page-options="{{toJSON this.live.programme }}">
-                        <img class="darkImage" src="{{fullImageURL live.programme.imageURL}}" style="width:544; height:306;"/>
+                        <img src="{{fullImageURL live.programme.imageURL}}" style="width:533; height:300;"/>
                         <overlay>
                             <badge src="{{{asset_url channelLogo}}}" style="width:90; height:54; tv-position: top; background:rgba(0,0,0,0.2)" />
                             <progressBar value="0.{{live.programme.elapsedPercentage}}" style="tv-tint-color2x: black; tv-tint-color: {{tintColor}}"/>
@@ -18,7 +15,7 @@
                     </lockup>
                     {{/each}}
                 </section>
-            </grid>
+            </shelf>
         </collectionList>
     </stackTemplate>
 </document>
