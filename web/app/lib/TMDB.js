@@ -10,6 +10,12 @@ const url = {
   },
   movieDetails (id) {
     return `${BASE_URL_V3}/movie/${id}?api_key=${API_KEY}&language=${LANGUAGE}&append_to_response=credits`
+  },
+  searchTVShow (query) {
+    return `${BASE_URL_V3}/search/tv/?api_key=${API_KEY}&language=${LANGUAGE}&page=1&include_adult=false&query=${encodeURIComponent(query)}`
+  },
+  tvShowDetails(id) {
+    return `${BASE_URL_V3}/tv/${id}?api_key=${API_KEY}&language=${LANGUAGE}&append_to_response=credits`
   }
 }
 

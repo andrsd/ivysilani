@@ -12,13 +12,16 @@ var ProgrammeDetailsPage = ATV.Page.create({
   template: template,
   ready: function (options, resolve, reject) {
     var title = options.title
-    var m = title.match(/(.*)(:\s*\d+\.\s*\d+\.\s*\d+)/)
+    var m = title.match(/(.+)(:[^:]+)/)
     if (m != null) {
       title = m[1]
     }
 
-    ATV.Ajax
-      .get(TMDB.url.searchMovie(title))
+    Promise
+      .all([
+        ATV.Ajax.get(TMDB.url.searchMovie(title)),
+        ATV.Ajax.get(TMDB.url.searchTVShow(title))
+      ])
       .then((res) => {
         let getProgrammeDetails = ATV.Ajax.post(API.url.programmeDetails, API.xhrOptions({ID: options.ID}))
         let getRelatedList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({
@@ -26,12 +29,20 @@ var ProgrammeDetailsPage = ATV.Page.create({
           'type[0]': 'related'
         }))
 
-        if (res.response.total_results == 1) {
-          var id = res.response.results[0].id
+        if (res[0].response.total_results == 1) {
+          var id = res[0].response.results[0].id
           return Promise.all([
             getProgrammeDetails,
             getRelatedList,
             ATV.Ajax.get(TMDB.url.movieDetails(id))
+          ])
+        }
+        else if (res[1].response.total_results == 1) {
+          var id = res[1].response.results[0].id
+          return Promise.all([
+            getProgrammeDetails,
+            getRelatedList,
+            ATV.Ajax.get(TMDB.url.tvShowDetails(id))
           ])
         }
         else {
@@ -52,34 +63,56 @@ var ProgrammeDetailsPage = ATV.Page.create({
 
         if (res.length == 3) {
           var tmdb = res[2].response
-          details.title = tmdb.original_title
+          if ('original_title' in tmdb) {
+            details.title = tmdb.original_title
+          }
+          if ('name' in tmdb) {
+            details.title = tmdb.name
+          }
           details.description = tmdb.overview
-          details.poster_path = ''
           details.poster_path = TMDB.imageUrl(tmdb.poster_path)
 
           if (tmdb.genres.length > 0) {
             details.genres = tmdb.genres
           }
 
-          var release_date = new Date(tmdb.release_date)
-          details.release_year = release_date.getFullYear()
+          if ('release_date' in tmdb) {
+            var release_date = new Date(tmdb.release_date)
+            details.release_year = release_date.getFullYear()
 
-          info.push({
-            title: 'Vydáno',
-            values: [ release_date.toLocaleString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' }) ]
-          })
+            info.push({
+              title: 'Vydáno',
+              values: [ release_date.toLocaleString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' }) ]
+            })
+          }
+
+          if ('first_air_date' in tmdb) {
+            var first_air_date = new Date(tmdb.first_air_date)
+            details.release_year = first_air_date.getFullYear()
+
+            info.push({
+              title: 'Poprvé vysíláno',
+              values: [ first_air_date.toLocaleString('cs-CZ', { day: 'numeric', month: 'long', year: 'numeric' }) ]
+            })
+          }
 
           // runtime
-          var hh = Math.floor(tmdb.runtime / 60)
-          var mm = tmdb.runtime % 60
-          if (hh > 0)
-            details.runtime = `${hh}h ${mm}min`
-          else
-            details.runtime = `${mm}min`
-          info.push({
-            title: 'Délka',
-            values: [ `${hh}:${mm}` ]
-          })
+          if ('runtime' in tmdb) {
+            var hh = Math.floor(tmdb.runtime / 60)
+            var mm = tmdb.runtime % 60
+            if (hh > 0) {
+              if (mm < 10)
+                details.runtime = `${hh}h 0${mm}min`
+              else
+                details.runtime = `${hh}h ${mm}min`
+            }
+            else
+              details.runtime = `${mm}min`
+            info.push({
+              title: 'Délka',
+              values: [ `${hh}:${mm}` ]
+            })
+          }
 
           if (tmdb.production_companies.length > 0) {
             var studios = []
@@ -92,16 +125,18 @@ var ProgrammeDetailsPage = ATV.Page.create({
             })
           }
 
-          if (tmdb.spoken_languages.length > 0) {
-            var langs = []
-            for (var l of tmdb.spoken_languages) {
-              langs.push(l.name)
-            }
+          if ('spoken_languages' in tmdb) {
+            if (tmdb.spoken_languages.length > 0) {
+              var langs = []
+              for (var l of tmdb.spoken_languages) {
+                langs.push(l.name)
+              }
 
-            languages.push({
-              title: 'Jazyky',
-              values: langs
-            })
+              languages.push({
+                title: 'Jazyky',
+                values: langs
+              })
+            }
           }
 
           var credits = tmdb.credits

@@ -26,8 +26,12 @@
       <stack>
         <title style="tv-text-style: title3;">{{ details.title }}</title>
         <row>
+          {{#if details.runtime}}
           <text>{{ details.runtime }}</text>
+          {{/if}}
+          {{#if details.release_year}}
           <text>{{ details.release_year }}</text>
+          {{/if}}
         </row>
         <description allowsZooming="true" moreLabel="more">{{ details.description }}</description>
         <row>
