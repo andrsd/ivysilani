@@ -29,7 +29,7 @@ var ProgrammeDetailsPage = ATV.Page.create({
           'type[0]': 'related'
         }))
 
-        if (res[0].response.total_results == 1) {
+        if ((res[0].response.total_results > 0) && (res[1].response.total_results == 0)) {
           var id = res[0].response.results[0].id
           return Promise.all([
             getProgrammeDetails,
@@ -37,7 +37,7 @@ var ProgrammeDetailsPage = ATV.Page.create({
             ATV.Ajax.get(TMDB.url.movieDetails(id))
           ])
         }
-        else if (res[1].response.total_results == 1) {
+        else if ((res[0].response.total_results == 0) && (res[1].response.total_results > 0)) {
           var id = res[1].response.results[0].id
           return Promise.all([
             getProgrammeDetails,
