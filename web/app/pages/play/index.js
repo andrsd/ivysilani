@@ -1,10 +1,12 @@
 import ATV from 'atvjs'
+import template from './template.hbs'
 import fastXmlParser from 'fast-xml-parser'
 
 import API from 'lib/ivysilani.js'
 import History from 'lib/history.js'
 
 var programme_id = null
+var player = new Player()
 
 const PlayPage = ATV.Page.create({
   name: 'play',
@@ -34,7 +36,6 @@ const PlayPage = ATV.Page.create({
         const playlistUrl = Object.values(parsed)[0]
         console.log(playlistUrl)
 
-        const player = new Player()
         const tvosPlaylist = new Playlist()
 
         const playlist = API.syncAjax(playlistUrl, { responseType: 'json' }).playlist
@@ -47,21 +48,43 @@ const PlayPage = ATV.Page.create({
 
           if (key == 0) {
             player.playlist = tvosPlaylist
-            player.play()
-            History.set(programme_id, 0.5)
 
-            player.addEventListener('mediaItemWillChange', function(e) {
-              History.set(programme_id, 1.)
-            })
-            player.addEventListener('stateDidChange', function(stateObj) {
-              if (stateObj.state == 'end') {
-                History.set(programme_id, 1.)
-              }
+            player.addEventListener('timeDidChange', function(info) {
+              History.set(programme_id, info.time)
+            }, {
+              interval: 1
             })
           }
         })
 
-        resolve(false)
+        var watched = History.watched(programme_id)
+
+        if ((watched > 0) && (watched < (options.footage * 60 - 5))) {
+          var time = new Date(watched * 1000).toISOString('H:mm:ss').substr(11, 8)
+
+          var doc = ATV.Navigation.presentModal({
+            template: template,
+            data: {
+              time: time
+            },
+          })
+          doc
+            .getElementById('play-btn')
+            .addEventListener('select', () => {
+              player.play()
+            })
+
+          doc
+            .getElementById('resume-btn')
+            .addEventListener('select', () => {
+              player.seekToTime(watched)
+              player.play()
+            })
+        }
+        else {
+          player.play()
+          resolve(false)
+        }
       }, (xhr) => {
         reject(xhr)
       })
