@@ -1,0 +1,702 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		020F3F9724684502003D8180 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020F3F9624684502003D8180 /* AppDelegate.swift */; };
+		020F3F9A24684503003D8180 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 020F3F9924684503003D8180 /* Assets.xcassets */; };
+		020F3F9D24684503003D8180 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 020F3F9B24684503003D8180 /* LaunchScreen.storyboard */; };
+		020F3FB324684733003D8180 /* GCDWebServers.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FB124684733003D8180 /* GCDWebServers.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FB624684733003D8180 /* GCDWebServers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 020F3FAF24684733003D8180 /* GCDWebServers.framework */; };
+		020F3FB824684733003D8180 /* GCDWebServers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 020F3FAF24684733003D8180 /* GCDWebServers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		020F3FE524684805003D8180 /* GCDWebServerFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FC724684805003D8180 /* GCDWebServerFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FE624684805003D8180 /* GCDWebServerPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FC824684805003D8180 /* GCDWebServerPrivate.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		020F3FE724684805003D8180 /* GCDWebServerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FC924684805003D8180 /* GCDWebServerResponse.m */; };
+		020F3FE824684805003D8180 /* GCDWebServerConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FCA24684805003D8180 /* GCDWebServerConnection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FE924684805003D8180 /* GCDWebServer.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FCB24684805003D8180 /* GCDWebServer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FEA24684805003D8180 /* GCDWebServerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FCC24684805003D8180 /* GCDWebServerRequest.m */; };
+		020F3FEB24684805003D8180 /* GCDWebServerHTTPStatusCodes.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FCD24684805003D8180 /* GCDWebServerHTTPStatusCodes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FEC24684805003D8180 /* GCDWebServerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FCE24684805003D8180 /* GCDWebServerResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FED24684805003D8180 /* GCDWebServerFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FCF24684805003D8180 /* GCDWebServerFunctions.m */; };
+		020F3FEE24684805003D8180 /* GCDWebServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FD024684805003D8180 /* GCDWebServer.m */; };
+		020F3FEF24684805003D8180 /* GCDWebServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FD124684805003D8180 /* GCDWebServerConnection.m */; };
+		020F3FF024684805003D8180 /* GCDWebServerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FD224684805003D8180 /* GCDWebServerRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FF124684805003D8180 /* GCDWebServerDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FD424684805003D8180 /* GCDWebServerDataRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FF224684805003D8180 /* GCDWebServerMultiPartFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FD524684805003D8180 /* GCDWebServerMultiPartFormRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FF324684805003D8180 /* GCDWebServerFileRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FD624684805003D8180 /* GCDWebServerFileRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FF424684805003D8180 /* GCDWebServerURLEncodedFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FD724684805003D8180 /* GCDWebServerURLEncodedFormRequest.m */; };
+		020F3FF524684805003D8180 /* GCDWebServerMultiPartFormRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FD824684805003D8180 /* GCDWebServerMultiPartFormRequest.m */; };
+		020F3FF624684805003D8180 /* GCDWebServerDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FD924684805003D8180 /* GCDWebServerDataRequest.m */; };
+		020F3FF724684805003D8180 /* GCDWebServerFileRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FDA24684805003D8180 /* GCDWebServerFileRequest.m */; };
+		020F3FF824684805003D8180 /* GCDWebServerURLEncodedFormRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FDB24684805003D8180 /* GCDWebServerURLEncodedFormRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FF924684805003D8180 /* GCDWebServerFileResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FDD24684805003D8180 /* GCDWebServerFileResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FFA24684805003D8180 /* GCDWebServerStreamedResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FDE24684805003D8180 /* GCDWebServerStreamedResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FFB24684805003D8180 /* GCDWebServerErrorResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FDF24684805003D8180 /* GCDWebServerErrorResponse.m */; };
+		020F3FFC24684805003D8180 /* GCDWebServerDataResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FE024684805003D8180 /* GCDWebServerDataResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F3FFD24684805003D8180 /* GCDWebServerFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FE124684805003D8180 /* GCDWebServerFileResponse.m */; };
+		020F3FFE24684805003D8180 /* GCDWebServerDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FE224684805003D8180 /* GCDWebServerDataResponse.m */; };
+		020F3FFF24684805003D8180 /* GCDWebServerErrorResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 020F3FE324684805003D8180 /* GCDWebServerErrorResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		020F400024684805003D8180 /* GCDWebServerStreamedResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 020F3FE424684805003D8180 /* GCDWebServerStreamedResponse.m */; };
+		020F40042468497F003D8180 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 020F400124684858003D8180 /* dist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		020F3FA8246846FB003D8180 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020F3F8B24684502003D8180 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 020F3FA4246846DB003D8180;
+			remoteInfo = web;
+		};
+		020F3FB424684733003D8180 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 020F3F8B24684502003D8180 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 020F3FAE24684733003D8180;
+			remoteInfo = GCDWebServers;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		020F3FB724684733003D8180 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				020F3FB824684733003D8180 /* GCDWebServers.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		020F3F9324684502003D8180 /* ivysilani.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ivysilani.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		020F3F9624684502003D8180 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		020F3F9924684503003D8180 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		020F3F9C24684503003D8180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		020F3F9E24684503003D8180 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		020F3FAF24684733003D8180 /* GCDWebServers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCDWebServers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		020F3FB124684733003D8180 /* GCDWebServers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GCDWebServers.h; sourceTree = "<group>"; };
+		020F3FB224684733003D8180 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		020F3FBF24684789003D8180 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		020F3FC724684805003D8180 /* GCDWebServerFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerFunctions.h; sourceTree = "<group>"; };
+		020F3FC824684805003D8180 /* GCDWebServerPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerPrivate.h; sourceTree = "<group>"; };
+		020F3FC924684805003D8180 /* GCDWebServerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerResponse.m; sourceTree = "<group>"; };
+		020F3FCA24684805003D8180 /* GCDWebServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerConnection.h; sourceTree = "<group>"; };
+		020F3FCB24684805003D8180 /* GCDWebServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServer.h; sourceTree = "<group>"; };
+		020F3FCC24684805003D8180 /* GCDWebServerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerRequest.m; sourceTree = "<group>"; };
+		020F3FCD24684805003D8180 /* GCDWebServerHTTPStatusCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerHTTPStatusCodes.h; sourceTree = "<group>"; };
+		020F3FCE24684805003D8180 /* GCDWebServerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerResponse.h; sourceTree = "<group>"; };
+		020F3FCF24684805003D8180 /* GCDWebServerFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFunctions.m; sourceTree = "<group>"; };
+		020F3FD024684805003D8180 /* GCDWebServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServer.m; sourceTree = "<group>"; };
+		020F3FD124684805003D8180 /* GCDWebServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerConnection.m; sourceTree = "<group>"; };
+		020F3FD224684805003D8180 /* GCDWebServerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerRequest.h; sourceTree = "<group>"; };
+		020F3FD424684805003D8180 /* GCDWebServerDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerDataRequest.h; sourceTree = "<group>"; };
+		020F3FD524684805003D8180 /* GCDWebServerMultiPartFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerMultiPartFormRequest.h; sourceTree = "<group>"; };
+		020F3FD624684805003D8180 /* GCDWebServerFileRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerFileRequest.h; sourceTree = "<group>"; };
+		020F3FD724684805003D8180 /* GCDWebServerURLEncodedFormRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerURLEncodedFormRequest.m; sourceTree = "<group>"; };
+		020F3FD824684805003D8180 /* GCDWebServerMultiPartFormRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerMultiPartFormRequest.m; sourceTree = "<group>"; };
+		020F3FD924684805003D8180 /* GCDWebServerDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerDataRequest.m; sourceTree = "<group>"; };
+		020F3FDA24684805003D8180 /* GCDWebServerFileRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFileRequest.m; sourceTree = "<group>"; };
+		020F3FDB24684805003D8180 /* GCDWebServerURLEncodedFormRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerURLEncodedFormRequest.h; sourceTree = "<group>"; };
+		020F3FDD24684805003D8180 /* GCDWebServerFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerFileResponse.h; sourceTree = "<group>"; };
+		020F3FDE24684805003D8180 /* GCDWebServerStreamedResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerStreamedResponse.h; sourceTree = "<group>"; };
+		020F3FDF24684805003D8180 /* GCDWebServerErrorResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerErrorResponse.m; sourceTree = "<group>"; };
+		020F3FE024684805003D8180 /* GCDWebServerDataResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerDataResponse.h; sourceTree = "<group>"; };
+		020F3FE124684805003D8180 /* GCDWebServerFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerFileResponse.m; sourceTree = "<group>"; };
+		020F3FE224684805003D8180 /* GCDWebServerDataResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerDataResponse.m; sourceTree = "<group>"; };
+		020F3FE324684805003D8180 /* GCDWebServerErrorResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDWebServerErrorResponse.h; sourceTree = "<group>"; };
+		020F3FE424684805003D8180 /* GCDWebServerStreamedResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDWebServerStreamedResponse.m; sourceTree = "<group>"; };
+		020F400124684858003D8180 /* dist */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dist; path = web/dist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		020F3F9024684502003D8180 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020F3FB624684733003D8180 /* GCDWebServers.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020F3FAC24684733003D8180 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		020F3F8A24684502003D8180 = {
+			isa = PBXGroup;
+			children = (
+				020F400124684858003D8180 /* dist */,
+				020F3F9524684502003D8180 /* ivysilani */,
+				020F3FB024684733003D8180 /* GCDWebServers */,
+				020F3F9424684502003D8180 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		020F3F9424684502003D8180 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				020F3F9324684502003D8180 /* ivysilani.app */,
+				020F3FAF24684733003D8180 /* GCDWebServers.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		020F3F9524684502003D8180 /* ivysilani */ = {
+			isa = PBXGroup;
+			children = (
+				020F3F9624684502003D8180 /* AppDelegate.swift */,
+				020F3F9924684503003D8180 /* Assets.xcassets */,
+				020F3F9B24684503003D8180 /* LaunchScreen.storyboard */,
+				020F3F9E24684503003D8180 /* Info.plist */,
+			);
+			path = ivysilani;
+			sourceTree = "<group>";
+		};
+		020F3FB024684733003D8180 /* GCDWebServers */ = {
+			isa = PBXGroup;
+			children = (
+				020F3FC624684805003D8180 /* Core */,
+				020F3FD324684805003D8180 /* Requests */,
+				020F3FDC24684805003D8180 /* Responses */,
+				020F3FBF24684789003D8180 /* module.modulemap */,
+				020F3FB124684733003D8180 /* GCDWebServers.h */,
+				020F3FB224684733003D8180 /* Info.plist */,
+			);
+			path = GCDWebServers;
+			sourceTree = "<group>";
+		};
+		020F3FC624684805003D8180 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				020F3FC724684805003D8180 /* GCDWebServerFunctions.h */,
+				020F3FC824684805003D8180 /* GCDWebServerPrivate.h */,
+				020F3FC924684805003D8180 /* GCDWebServerResponse.m */,
+				020F3FCA24684805003D8180 /* GCDWebServerConnection.h */,
+				020F3FCB24684805003D8180 /* GCDWebServer.h */,
+				020F3FCC24684805003D8180 /* GCDWebServerRequest.m */,
+				020F3FCD24684805003D8180 /* GCDWebServerHTTPStatusCodes.h */,
+				020F3FCE24684805003D8180 /* GCDWebServerResponse.h */,
+				020F3FCF24684805003D8180 /* GCDWebServerFunctions.m */,
+				020F3FD024684805003D8180 /* GCDWebServer.m */,
+				020F3FD124684805003D8180 /* GCDWebServerConnection.m */,
+				020F3FD224684805003D8180 /* GCDWebServerRequest.h */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		020F3FD324684805003D8180 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				020F3FD424684805003D8180 /* GCDWebServerDataRequest.h */,
+				020F3FD524684805003D8180 /* GCDWebServerMultiPartFormRequest.h */,
+				020F3FD624684805003D8180 /* GCDWebServerFileRequest.h */,
+				020F3FD724684805003D8180 /* GCDWebServerURLEncodedFormRequest.m */,
+				020F3FD824684805003D8180 /* GCDWebServerMultiPartFormRequest.m */,
+				020F3FD924684805003D8180 /* GCDWebServerDataRequest.m */,
+				020F3FDA24684805003D8180 /* GCDWebServerFileRequest.m */,
+				020F3FDB24684805003D8180 /* GCDWebServerURLEncodedFormRequest.h */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		020F3FDC24684805003D8180 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				020F3FDD24684805003D8180 /* GCDWebServerFileResponse.h */,
+				020F3FDE24684805003D8180 /* GCDWebServerStreamedResponse.h */,
+				020F3FDF24684805003D8180 /* GCDWebServerErrorResponse.m */,
+				020F3FE024684805003D8180 /* GCDWebServerDataResponse.h */,
+				020F3FE124684805003D8180 /* GCDWebServerFileResponse.m */,
+				020F3FE224684805003D8180 /* GCDWebServerDataResponse.m */,
+				020F3FE324684805003D8180 /* GCDWebServerErrorResponse.h */,
+				020F3FE424684805003D8180 /* GCDWebServerStreamedResponse.m */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		020F3FAA24684733003D8180 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020F3FE624684805003D8180 /* GCDWebServerPrivate.h in Headers */,
+				020F3FFA24684805003D8180 /* GCDWebServerStreamedResponse.h in Headers */,
+				020F3FFC24684805003D8180 /* GCDWebServerDataResponse.h in Headers */,
+				020F3FF324684805003D8180 /* GCDWebServerFileRequest.h in Headers */,
+				020F3FE824684805003D8180 /* GCDWebServerConnection.h in Headers */,
+				020F3FF124684805003D8180 /* GCDWebServerDataRequest.h in Headers */,
+				020F3FEB24684805003D8180 /* GCDWebServerHTTPStatusCodes.h in Headers */,
+				020F3FF224684805003D8180 /* GCDWebServerMultiPartFormRequest.h in Headers */,
+				020F3FEC24684805003D8180 /* GCDWebServerResponse.h in Headers */,
+				020F3FE924684805003D8180 /* GCDWebServer.h in Headers */,
+				020F3FE524684805003D8180 /* GCDWebServerFunctions.h in Headers */,
+				020F3FF924684805003D8180 /* GCDWebServerFileResponse.h in Headers */,
+				020F3FFF24684805003D8180 /* GCDWebServerErrorResponse.h in Headers */,
+				020F3FF824684805003D8180 /* GCDWebServerURLEncodedFormRequest.h in Headers */,
+				020F3FF024684805003D8180 /* GCDWebServerRequest.h in Headers */,
+				020F3FB324684733003D8180 /* GCDWebServers.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXLegacyTarget section */
+		020F3FA4246846DB003D8180 /* web */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "run dist";
+			buildConfigurationList = 020F3FA5246846DB003D8180 /* Build configuration list for PBXLegacyTarget "web" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/local/bin/npm;
+			buildWorkingDirectory = "";
+			dependencies = (
+			);
+			name = web;
+			passBuildSettingsInEnvironment = 1;
+			productName = web;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXNativeTarget section */
+		020F3F9224684502003D8180 /* ivysilani */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 020F3FA124684503003D8180 /* Build configuration list for PBXNativeTarget "ivysilani" */;
+			buildPhases = (
+				020F3F8F24684502003D8180 /* Sources */,
+				020F3F9024684502003D8180 /* Frameworks */,
+				020F3F9124684502003D8180 /* Resources */,
+				020F3FB724684733003D8180 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				020F3FA9246846FB003D8180 /* PBXTargetDependency */,
+				020F3FB524684733003D8180 /* PBXTargetDependency */,
+			);
+			name = ivysilani;
+			productName = ivysilani;
+			productReference = 020F3F9324684502003D8180 /* ivysilani.app */;
+			productType = "com.apple.product-type.application";
+		};
+		020F3FAE24684733003D8180 /* GCDWebServers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 020F3FB924684733003D8180 /* Build configuration list for PBXNativeTarget "GCDWebServers" */;
+			buildPhases = (
+				020F3FAA24684733003D8180 /* Headers */,
+				020F3FAB24684733003D8180 /* Sources */,
+				020F3FAC24684733003D8180 /* Frameworks */,
+				020F3FAD24684733003D8180 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GCDWebServers;
+			productName = GCDWebServers;
+			productReference = 020F3FAF24684733003D8180 /* GCDWebServers.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		020F3F8B24684502003D8180 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "David Andrs";
+				TargetAttributes = {
+					020F3F9224684502003D8180 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					020F3FA4246846DB003D8180 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					020F3FAE24684733003D8180 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 020F3F8E24684502003D8180 /* Build configuration list for PBXProject "ivysilani" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 020F3F8A24684502003D8180;
+			productRefGroup = 020F3F9424684502003D8180 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				020F3F9224684502003D8180 /* ivysilani */,
+				020F3FA4246846DB003D8180 /* web */,
+				020F3FAE24684733003D8180 /* GCDWebServers */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		020F3F9124684502003D8180 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020F40042468497F003D8180 /* dist in Resources */,
+				020F3F9A24684503003D8180 /* Assets.xcassets in Resources */,
+				020F3F9D24684503003D8180 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020F3FAD24684733003D8180 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		020F3F8F24684502003D8180 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020F3F9724684502003D8180 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		020F3FAB24684733003D8180 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				020F3FEE24684805003D8180 /* GCDWebServer.m in Sources */,
+				020F3FF524684805003D8180 /* GCDWebServerMultiPartFormRequest.m in Sources */,
+				020F3FF624684805003D8180 /* GCDWebServerDataRequest.m in Sources */,
+				020F3FF424684805003D8180 /* GCDWebServerURLEncodedFormRequest.m in Sources */,
+				020F3FEA24684805003D8180 /* GCDWebServerRequest.m in Sources */,
+				020F3FFD24684805003D8180 /* GCDWebServerFileResponse.m in Sources */,
+				020F3FF724684805003D8180 /* GCDWebServerFileRequest.m in Sources */,
+				020F3FFB24684805003D8180 /* GCDWebServerErrorResponse.m in Sources */,
+				020F400024684805003D8180 /* GCDWebServerStreamedResponse.m in Sources */,
+				020F3FEF24684805003D8180 /* GCDWebServerConnection.m in Sources */,
+				020F3FFE24684805003D8180 /* GCDWebServerDataResponse.m in Sources */,
+				020F3FE724684805003D8180 /* GCDWebServerResponse.m in Sources */,
+				020F3FED24684805003D8180 /* GCDWebServerFunctions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		020F3FA9246846FB003D8180 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 020F3FA4246846DB003D8180 /* web */;
+			targetProxy = 020F3FA8246846FB003D8180 /* PBXContainerItemProxy */;
+		};
+		020F3FB524684733003D8180 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 020F3FAE24684733003D8180 /* GCDWebServers */;
+			targetProxy = 020F3FB424684733003D8180 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		020F3F9B24684503003D8180 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				020F3F9C24684503003D8180 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		020F3F9F24684503003D8180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+			};
+			name = Debug;
+		};
+		020F3FA024684503003D8180 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = appletvos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		020F3FA224684503003D8180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y8G529976F;
+				INFOPLIST_FILE = ivysilani/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = name.andrs.tvos.ivysilani;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Debug;
+		};
+		020F3FA324684503003D8180 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y8G529976F;
+				INFOPLIST_FILE = ivysilani/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = name.andrs.tvos.ivysilani;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Release;
+		};
+		020F3FA6246846DB003D8180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUGGING_SYMBOLS = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = Y8G529976F;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		020F3FA7246846DB003D8180 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = Y8G529976F;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		020F3FBA24684733003D8180 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Y8G529976F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = GCDWebServers/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = name.andrs.tvos.GCDWebServers;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		020F3FBB24684733003D8180 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Y8G529976F;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = GCDWebServers/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = name.andrs.tvos.GCDWebServers;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		020F3F8E24684502003D8180 /* Build configuration list for PBXProject "ivysilani" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020F3F9F24684503003D8180 /* Debug */,
+				020F3FA024684503003D8180 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		020F3FA124684503003D8180 /* Build configuration list for PBXNativeTarget "ivysilani" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020F3FA224684503003D8180 /* Debug */,
+				020F3FA324684503003D8180 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		020F3FA5246846DB003D8180 /* Build configuration list for PBXLegacyTarget "web" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020F3FA6246846DB003D8180 /* Debug */,
+				020F3FA7246846DB003D8180 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		020F3FB924684733003D8180 /* Build configuration list for PBXNativeTarget "GCDWebServers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				020F3FBA24684733003D8180 /* Debug */,
+				020F3FBB24684733003D8180 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 020F3F8B24684502003D8180 /* Project object */;
+}
