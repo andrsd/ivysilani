@@ -9,7 +9,7 @@ import HB from 'lib/template-helpers.js'
 
 let showInfo
 
-var AlphabetLetterPage = ATV.Page.create({
+var ProgrammeListPage = ATV.Page.create({
   name: 'programme-list',
   template: template,
   events: {
@@ -127,4 +127,4 @@ var AlphabetLetterPage = ATV.Page.create({
   },
 })
 
-export default AlphabetLetterPage
+export default ProgrammeListPage
