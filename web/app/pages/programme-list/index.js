@@ -40,8 +40,6 @@ var AlphabetLetterPage = ATV.Page.create({
       promises.push(getProgrammeDetails)
     }
 
-    // Then resolve them at once
-    // Old template {{{programmeImg ../showInfo.ID ID}}}
     Promise
       .all(promises)
       .then((xhrs) => {
@@ -58,16 +56,21 @@ var AlphabetLetterPage = ATV.Page.create({
         }
 
         console.log(programmeList)
-        // console.log(xhrs[0].response)
 
         // Modifikace pagování, odstraň paging, pokud se všechno vešlo na 1 stránku
-        if (programmeList.episodes.paging.pagesCount === 1) { delete programmeList.episodes.paging }
+        if (programmeList.episodes.paging.pagesCount === 1) {
+          delete programmeList.episodes.paging
+        }
         // U některých pořadů má iVysílání chybu -> ukazuje, že je více stránek,
         // přitom další už je prázdná
-        if (programmeList.episodes.programme.length < pageSize) { delete programmeList.episodes.paging }
+        if (programmeList.episodes.programme.length < pageSize) {
+          delete programmeList.episodes.paging
+        }
         // Pokud to není seriál ale film, obal to do pole, kvůli korektnímu zobrazení
         // Kvuli konverzti XML -> JSON. fastXMLParser hodí jednu epizodu jako child, ne jako pole
-        if (!(programmeList.episodes.programme.constructor === Array)) { programmeList.episodes.programme = [programmeList.episodes.programme] }
+        if (!(programmeList.episodes.programme.constructor === Array)) {
+          programmeList.episodes.programme = [programmeList.episodes.programme]
+        }
 
         for (var e of programmeList.episodes.programme) {
           e.watched = History.watched(e.ID)
@@ -87,12 +90,10 @@ var AlphabetLetterPage = ATV.Page.create({
           episodes: programmeList.episodes.programme
         })
       }, (xhr) => {
-        // error
         reject()
       })
   },
   afterReady (doc) {
-    // Zavolá funkci, která buď přidá(true) nebo odebere(false) pořad z oblíbených
     const changeFavorites = () => {
       if (favorites.change(showInfo.title, showInfo.ID)) {
         doc.getElementById('favButton').innerHTML = '<badge src="resource://button-rated" />'
@@ -101,7 +102,6 @@ var AlphabetLetterPage = ATV.Page.create({
       }
     }
 
-    // Naslouchání stisknutí tlačítka
     doc
       .getElementById('favButton')
       .addEventListener('select', changeFavorites)

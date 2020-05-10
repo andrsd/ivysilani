@@ -22,7 +22,6 @@ const DatesDatePage = ATV.Page.create({
     let getCTD = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({ date: options.date, channel: '5' }))
     let getCTArt = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({ date: options.date, channel: '6' }))
 
-    // Then resolve them at once
     Promise
       .all([getCT1, getCT2, getCT24, getCTsport, getCTD, getCTArt])
       .then((xhrs) => {
@@ -43,7 +42,6 @@ const DatesDatePage = ATV.Page.create({
           dateInfo: options
         })
       }, (xhr) => {
-        // error
         reject()
       })
   }

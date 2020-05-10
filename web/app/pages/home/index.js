@@ -15,7 +15,6 @@ const HomePage = ATV.Page.create({
     let getTipsArchive = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({ 'spotlight': 'tipsArchive' }))
     let getTipsWatching = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({ 'spotlight': 'watching' }))
 
-    // Then resolve them at once
     Promise
       .all([getTipsMain, getTipsDay, getTipsWeek, getTipsNote, getTipsArchive, getTipsWatching])
       .then((xhrs) => {
@@ -37,7 +36,6 @@ const HomePage = ATV.Page.create({
           genres: API.get.genresList
         })
       }, (xhr) => {
-        // error
         reject()
       })
   }

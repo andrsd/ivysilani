@@ -1,6 +1,3 @@
-// ruby -run -ehttpd . -p9001
-// npm start
-
 import ATV from 'atvjs'
 
 // template helpers
@@ -76,7 +73,5 @@ ATV.start({
     ATV.Navigation.navigateToMenuPage()
   },
   onResume (options) {
-    // ATV.Navigation.clear()
-    // ATV.Navigation.navigateToMenuPage()
   }
 })

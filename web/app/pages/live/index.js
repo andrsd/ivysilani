@@ -8,10 +8,8 @@ const LivePage = ATV.Page.create({
   name: 'live',
   template,
   ready (options, resolve, reject) {
-    // get data from multiple requests
     let getLiveChannels = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({ current: 1 }))
 
-    // Then resolve them at once
     Promise
       .all([getLiveChannels])
       .then((xhrs) => {

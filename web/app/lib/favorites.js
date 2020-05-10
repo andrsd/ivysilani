@@ -18,6 +18,7 @@ const change = (title, id) => {
     return true
   }
 }
+
 const add = (title, id) => {
   let favorites = ATV.Settings.get('favorites')
   favorites.push({ title: title, ID: id })
@@ -47,6 +48,7 @@ const isFav = (id) => {
     return true
   }
 }
+
 export default {
   change,
   isFav

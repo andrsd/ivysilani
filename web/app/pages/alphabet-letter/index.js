@@ -16,17 +16,8 @@ const AlphabetLetterPage = ATV.Page.create({
       type: 'document'
     })
 
-    // get data from multiple requests
-
-    if (options.link.length === 1) {
-
-    } else {
-      // let getShows = ATV.Ajax.get(API.listGenre(options.link));
-    }
-
     let getShows = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({letter: options.link}))
 
-    // Then resolve them at once
     Promise
       .all([getShows])
       .then((xhrs) => {
@@ -39,16 +30,9 @@ const AlphabetLetterPage = ATV.Page.create({
           letter: letter
         })
       }, (xhr) => {
-        // error
         reject()
       })
   }
-/* afterReady(doc) {
-    //ATV.Navigation.removeActiveDocument();
-    //ATV.Navigation.replaceDocument(doc,getActiveDocument());
-    //navigationDocument.removeDocument(ATV.currentDocument);
-    //navigationDocument.replaceDocument(doc, getActiveDocument());
-}, */
 })
 
 export default AlphabetLetterPage

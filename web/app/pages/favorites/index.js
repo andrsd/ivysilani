@@ -20,16 +20,13 @@ const FavoritesPage = ATV.Page.create({
         },
         type: 'document'
       })
-      // makeDom(cfg, response)
     }
 
     var promises = []
 
-    // Issue a request for each show and then parse into JSON
     favorites.forEach((value) => {
       promises.push(
         ATV.Ajax.post(API.url.programmeDetails, API.xhrOptions({ ID: value.ID }))
-          // Promise
           .then((xhr) => {
             value.showInfo = fastXmlParser.parse(xhr.response).programme
             // Pokud uživatel přejde na serial z oblibenych, do showInfo se načte poslední epizoda
@@ -39,7 +36,6 @@ const FavoritesPage = ATV.Page.create({
           }))
     })
 
-    // After all requests are done
     Promise
       .all(promises)
       .then(() => {
@@ -52,26 +48,3 @@ const FavoritesPage = ATV.Page.create({
       })
   }
 })
-
-const EmptyPage = ATV.Page.create({
-  name: 'favorites',
-  template: errorTpl,
-  data: {
-    title: 'Žádné oblíbené pořady',
-    message: 'Zkuste nějaké přidat při procházení'
-  },
-  type: 'document'
-  // makeDom(cfg, response)
-})
-
-const Decision = () => {
-  let favorites = ATV.Settings.get('favorites')
-  console.log(favorites)
-  if (favorites === undefined || ATV._.isEmpty(favorites)) {
-    return EmptyPage()
-  } else {
-    return FavoritesPage()
-  }
-}
-
-export default Decision

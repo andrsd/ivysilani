@@ -4,8 +4,6 @@ import staticData from './static-data'
 
 const _ = ATV._ // lodash
 
-// import qs from 'qs';
-
 const BASE_XML_URL = 'https://www.ceskatelevize.cz'
 const TOKEN_URL = `${BASE_XML_URL}/services/ivysilani/xml/token/`
 const IMAGE_WIDTH = 1280
