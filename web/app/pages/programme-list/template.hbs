@@ -30,8 +30,7 @@
             <title>Přehrát</title>
           </buttonLockup>
           <buttonLockup id="favButton">
-            <badge src="{{ ratedState }}" />
-            <title>Líbí</title>
+            {{{ favoriteButton }}}
           </buttonLockup>
         </row>
       </stack>
@@ -60,7 +59,7 @@
           <description id="description" style="tv-text-max-lines: 2"></description>
           <row>
             <buttonLockup id="favButton" style="tv-position: right; margin-left: 100">
-              <badge src="{{ ratedState }}" />
+              {{{ favoriteButton }}}
             </buttonLockup>
           </row>
         </itemBanner>

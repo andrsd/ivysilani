@@ -49,7 +49,17 @@ const isFav = (id) => {
   }
 }
 
+const badge = (id) => {
+  if (isFav(id)) {
+    return '<badge src="resource://button-remove" /><title>Odstranit</title>'
+  }
+  else {
+    return '<badge src="resource://button-add" /><title>Oblíbit</title>'
+  }
+}
+
 export default {
   change,
-  isFav
+  isFav,
+  badge
 }

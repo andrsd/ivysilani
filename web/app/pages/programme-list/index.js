@@ -76,12 +76,8 @@ var AlphabetLetterPage = ATV.Page.create({
           e.watched = History.watched(e.ID)
         }
 
-        // Pokud se pořad nachází v oblíbených, uprav vzhled tlačítka
-        let ratedState
-        if (favorites.isFav(showInfo.ID)) { ratedState = 'resource://button-rated' } else { ratedState = 'resource://button-rate' }
-
         resolve({
-          ratedState: ratedState,
+          favoriteButton: favorites.badge(showInfo.ID),
           details: programmeDetails,
           related: programmeList.related.programme,
           showInfo: showInfo,
@@ -95,11 +91,8 @@ var AlphabetLetterPage = ATV.Page.create({
   },
   afterReady (doc) {
     const changeFavorites = () => {
-      if (favorites.change(showInfo.title, showInfo.ID)) {
-        doc.getElementById('favButton').innerHTML = '<badge src="resource://button-rated" />'
-      } else {
-        doc.getElementById('favButton').innerHTML = '<badge src="resource://button-rate" />'
-      }
+      favorites.change(showInfo.title, showInfo.ID)
+      doc.getElementById('favButton').innerHTML = favorites.badge(showInfo.ID)
     }
 
     doc
