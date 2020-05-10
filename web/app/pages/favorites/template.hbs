@@ -1,16 +1,16 @@
 <document>
-    <stackTemplate>
-        <collectionList>
-            <grid>
-                <section>
-                    {{#each favorites }}
-                    <lockup data-href-page="programme-list" data-href-page-options="{{toJSON this}}">
-                        <img class="darkImage" src="{{fullImageURL showInfo.imageURL}}" style="width:544; height:306;"/>
-                        <title>{{ title }}</title>
-                    </lockup>
-                    {{/each}}
-                </section>
-            </grid>
-        </collectionList>
-    </stackTemplate>
+  <stackTemplate>
+    <collectionList>
+      <grid>
+        <section>
+          {{#each favorites }}
+          <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this}}">
+            <img src="{{fullImageURL showInfo.imageURL}}" style="width:544; height:306;"/>
+            <title>{{ title }}</title>
+          </lockup>
+          {{/each}}
+        </section>
+      </grid>
+    </collectionList>
+  </stackTemplate>
 </document>

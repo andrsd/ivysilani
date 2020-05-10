@@ -58,8 +58,13 @@ const badge = (id) => {
   }
 }
 
+const get = () => {
+  return ATV.Settings.get('favorites')
+}
+
 export default {
   change,
   isFav,
-  badge
+  badge,
+  get
 }
