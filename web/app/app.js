@@ -63,6 +63,10 @@ ATV.start({
       '503': () => errorTpl({
         title: '500',
         message: 'An unknown error occurred in the application. Please try again later.'
+      }),
+      '502': () => errorTpl({
+        title: 'Spatna brana',
+        message: 'Ceska televize to ma rozbity. Zkus to pozdeji.'
       })
     }
   },
