@@ -21,9 +21,7 @@ var ProgrammeListPage = ATV.Page.create({
     let currentPage
     let pageSize = 20
     if ('paging' in options) { currentPage = options.paging.nextPage } else { currentPage = '1' }
-    if ('showInfo' in options) { showInfo = options.showInfo } else { showInfo = options }
-    // Když přicestuji z programme-details kliknutim na dalsi epizody
-    if ('SIDP' in options) { options.ID = options.SIDP }
+    showInfo = options
 
     let getProgrammeList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({
         ID: showInfo.ID,
@@ -35,27 +33,22 @@ var ProgrammeListPage = ATV.Page.create({
       }))
 
     var promises = [ getProgrammeList ]
-    if ('ID' in options) {
-      let getProgrammeDetails = ATV.Ajax.post(API.url.programmeDetails, API.xhrOptions({ID: options.ID}))
-      promises.push(getProgrammeDetails)
-    }
+    promises.push(
+      ATV.Ajax.post(API.url.programmeDetails,
+        API.xhrOptions({
+          ID: showInfo.ID
+        })
+      )
+    )
 
     Promise
       .all(promises)
       .then((xhrs) => {
         let programmeList = fastXmlParser.parse(xhrs[0].response).programmes
-        let programmeDetails
-        if (xhrs.length > 1) {
-          programmeDetails = fastXmlParser.parse(xhrs[1].response).programme
-          if (programmeDetails.description.length == 0) {
-            programmeDetails.description = options.synopsis
-          }
+        let programmeDetails = fastXmlParser.parse(xhrs[1].response).programme
+        if (programmeDetails.description.length == 0) {
+          programmeDetails.description = options.synopsis
         }
-        else {
-          programmeDetails = null
-        }
-
-        console.log(programmeList)
 
         // Modifikace pagování, odstraň paging, pokud se všechno vešlo na 1 stránku
         if (programmeList.episodes.paging.pagesCount === 1) {

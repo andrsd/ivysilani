@@ -1,33 +1,22 @@
 import ATV from 'atvjs'
 import fastXmlParser from 'fast-xml-parser'
-
 import template from './template.hbs'
 import API from 'lib/ivysilani.js'
 import favorites from 'lib/favorites.js'
-
-import errorTpl from 'shared/templates/error.hbs'
 
 const FavoritesPage = ATV.Page.create({
   name: 'favorites',
   template,
   ready (options, resolve, reject) {
-    let favorites = favorites.get()
+    let favs = favorites.get()
 
-    if (favorites === undefined) {
-      ATV.Navigation.showError({
-        data: {
-          title: 'Žádné oblíbené pořady',
-          message: 'Zkuste nějaké přidat při procházení'
-        },
-        type: 'document'
-      })
-    }
-    else {
+    if (favs.length > 0) {
       var promises = []
 
-      favorites.forEach((value) => {
+      favs.forEach((value) => {
         promises.push(
-          ATV.Ajax.post(API.url.programmeDetails, API.xhrOptions({ ID: value.ID }))
+          ATV.Ajax
+            .post(API.url.programmeDetails, API.xhrOptions({ ID: value.ID }))
             .then((xhr) => {
               value.showInfo = fastXmlParser.parse(xhr.response).programme
               console.log(value.showInfo)
@@ -38,12 +27,15 @@ const FavoritesPage = ATV.Page.create({
         .all(promises)
         .then(() => {
           resolve({
-            favorites: favorites
+            favorites: favs
           })
         }, (xhr) => {
           // error
           reject(xhr)
         })
+    }
+    else {
+      resolve()
     }
   }
 })

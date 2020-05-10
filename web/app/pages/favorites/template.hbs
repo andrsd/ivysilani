@@ -1,11 +1,12 @@
 <document>
+  {{#if favorites}}
   <stackTemplate>
     <collectionList>
       <grid>
         <section>
           {{#each favorites }}
-          <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this}}">
-            <img src="{{fullImageURL showInfo.imageURL}}" style="width:544; height:306;"/>
+          <lockup data-href-page="programme-list" data-href-page-options="{{toJSON this}}">
+            <img src="{{fullImageURL showInfo.imageURL}}" style="width:390; height:220;"/>
             <title>{{ title }}</title>
           </lockup>
           {{/each}}
@@ -13,4 +14,9 @@
       </grid>
     </collectionList>
   </stackTemplate>
+  {{else}}
+  <alertTemplate>
+    <description>Žádné oblíbené</description>
+  </alertTemplate>
+  {{/if}}
 </document>

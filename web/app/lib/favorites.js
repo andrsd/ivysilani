@@ -21,7 +21,10 @@ const change = (title, id) => {
 
 const add = (title, id) => {
   let favorites = ATV.Settings.get('favorites')
-  favorites.push({ title: title, ID: id })
+  favorites.push({
+    title: title,
+    ID: id
+  })
   favorites.sort((a, b) => a['title'].localeCompare(b['title']))
   ATV.Settings.set('favorites', favorites)
   console.log(ATV.Settings.get('favorites'))
@@ -59,6 +62,7 @@ const badge = (id) => {
 }
 
 const get = () => {
+  favInit()
   return ATV.Settings.get('favorites')
 }
 

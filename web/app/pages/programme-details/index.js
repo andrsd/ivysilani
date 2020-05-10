@@ -9,6 +9,7 @@ import TMDB from 'lib/TMDB.js'
 const _ = ATV._
 
 let showInfo
+let title
 
 var ProgrammeDetailsPage = ATV.Page.create({
   name: 'programme-details',
@@ -16,7 +17,7 @@ var ProgrammeDetailsPage = ATV.Page.create({
   ready: function (options, resolve, reject) {
     showInfo = options
 
-    var title = options.title
+    title = options.title
     var m = title.match(/(.+)(:[^:]+)/)
     if (m != null) {
       title = m[1]
@@ -208,7 +209,7 @@ var ProgrammeDetailsPage = ATV.Page.create({
   },
   afterReady (doc) {
     const changeFavorites = () => {
-      favorites.change(showInfo.title, showInfo.ID)
+      favorites.change(title, showInfo.ID)
       doc.getElementById('favButton').innerHTML = favorites.badge(showInfo.ID)
     }
 
