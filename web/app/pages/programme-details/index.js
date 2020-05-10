@@ -3,14 +3,19 @@ import fastXmlParser from 'fast-xml-parser'
 
 import template from './template.hbs'
 import API from 'lib/ivysilani.js'
+import favorites from 'lib/favorites.js'
 import TMDB from 'lib/TMDB.js'
 
 const _ = ATV._
+
+let showInfo
 
 var ProgrammeDetailsPage = ATV.Page.create({
   name: 'programme-details',
   template: template,
   ready: function (options, resolve, reject) {
+    showInfo = options
+
     var title = options.title
     var m = title.match(/(.+)(:[^:]+)/)
     if (m != null) {
@@ -190,6 +195,7 @@ var ProgrammeDetailsPage = ATV.Page.create({
         }
 
         resolve({
+          favoriteButton: favorites.badge(showInfo.ID),
           details: details,
           ctdetails: ctdetails,
           info: info,
@@ -199,6 +205,16 @@ var ProgrammeDetailsPage = ATV.Page.create({
       }, (res) => {
         resolve(false)
       })
+  },
+  afterReady (doc) {
+    const changeFavorites = () => {
+      favorites.change(showInfo.title, showInfo.ID)
+      doc.getElementById('favButton').innerHTML = favorites.badge(showInfo.ID)
+    }
+
+    doc
+      .getElementById('favButton')
+      .addEventListener('select', changeFavorites)
   }
 })
 
