@@ -63,8 +63,8 @@ var ProgrammeDetailsPage = ATV.Page.create({
 
         if (res.length == 3) {
           var tmdb = res[2].response
-          if ('original_title' in tmdb) {
-            details.title = tmdb.original_title
+          if ('title' in tmdb) {
+            details.title = tmdb.title
           }
           if ('name' in tmdb) {
             details.title = tmdb.name
