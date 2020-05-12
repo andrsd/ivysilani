@@ -33,7 +33,8 @@ const HomePage = ATV.Page.create({
           tipsArchive: tipsArchive.programme,
           tipsWatching: tipsWatching.programme,
           letters: API.get.alphabetList,
-          genres: API.get.genresList
+          genres: API.get.genresList,
+          schedule: API.get.datesList
         })
       }, (xhr) => {
         reject()

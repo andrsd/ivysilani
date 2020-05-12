@@ -53,7 +53,7 @@
             </shelf>
             <shelf>
                 <header>
-                  <title>Z našeho archivu</title>
+                  <title>Z archivu</title>
                 </header>
                 <section>
                     {{#each tipsArchive }}
@@ -76,6 +76,19 @@
                     </lockup>
                     {{/each}}
                 </section>
+            </shelf>
+            <shelf>
+              <header>
+                <title>Televizní program</title>
+              </header>
+              <section>
+                {{#each schedule }}
+                <lockup data-href-page="dates-date" data-href-page-options="{{toJSON this }}">
+                  <img src="" style="width:225; height:135;"/>
+                  <title>{{ short_title }}</title>
+                </lockup>
+                {{/each}}
+              </section>
             </shelf>
             <shelf>
                 <section>

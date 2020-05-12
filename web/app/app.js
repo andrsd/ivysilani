@@ -10,7 +10,6 @@ import errorTpl from 'shared/templates/error.hbs'
 
 // pages
 import HomePage from 'pages/home'
-import DatesPage from 'pages/dates'
 import FavoritesPage from 'pages/favorites'
 import LivePage from 'pages/live'
 
@@ -30,11 +29,6 @@ ATV.start({
       name: 'Domů',
       page: HomePage,
       attributes: { autoHighlight: true, reloadOnSelect: true }
-    }, {
-      id: 'dates',
-      name: 'Program',
-      page: DatesPage,
-      attributes: { reloadOnSelect: true }
     },{
       id: 'favorites',
       name: 'Oblíbené',
