@@ -4,11 +4,11 @@ import fastXmlParser from 'fast-xml-parser'
 import template from './template.hbs'
 import context_menu from './context-menu.hbs'
 import API from 'lib/ivysilani.js'
-import favorites from 'lib/favorites.js'
+import Favorites from 'lib/favorites.js'
 import History from 'lib/history.js'
 import HB from 'lib/template-helpers.js'
 
-let showInfo
+let show_info
 
 var ProgrammeListPage = ATV.Page.create({
   name: 'programme-list',
@@ -19,19 +19,22 @@ var ProgrammeListPage = ATV.Page.create({
   },
   ready: function (options, resolve, reject) {
     // Paging support
-    let currentPage
-    let pageSize = 20
-    if ('paging' in options) { currentPage = options.paging.nextPage } else { currentPage = '1' }
+    let current_page
+    let page_size = 20
+    if ('paging' in options)
+      current_page = options.paging.nextPage
+    else
+      current_page = '1'
     if ('showInfo' in options)
       // got here via paging
-      showInfo = options.showInfo
+      show_info = options.showInfo
     else
-      showInfo = options
+      show_info = options
 
     let getProgrammeList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({
-        ID: showInfo.ID,
-        'paging[episodes][currentPage]': currentPage,
-        'paging[episodes][pageSize]': pageSize,
+        ID: show_info.ID,
+        'paging[episodes][currentPage]': current_page,
+        'paging[episodes][pageSize]': page_size,
         'type[0]': 'episodes',
         'type[1]': 'related',
         'type[2]': 'bonuses'
@@ -41,7 +44,7 @@ var ProgrammeListPage = ATV.Page.create({
     promises.push(
       ATV.Ajax.post(API.url.programmeDetails,
         API.xhrOptions({
-          ID: showInfo.ID
+          ID: show_info.ID
         })
       )
     )
@@ -51,6 +54,8 @@ var ProgrammeListPage = ATV.Page.create({
       .then((xhrs) => {
         let programmeList = fastXmlParser.parse(xhrs[0].response).programmes
         let programmeDetails = fastXmlParser.parse(xhrs[1].response).programme
+        show_info.SIDP = programmeDetails.SIDP
+
         if (programmeDetails.description.length == 0) {
           programmeDetails.description = options.synopsis
         }
@@ -61,7 +66,7 @@ var ProgrammeListPage = ATV.Page.create({
         }
         // U některých pořadů má iVysílání chybu -> ukazuje, že je více stránek,
         // přitom další už je prázdná
-        if (programmeList.episodes.programme.length < pageSize) {
+        if (programmeList.episodes.programme.length < page_size) {
           delete programmeList.episodes.paging
         }
         // Pokud to není seriál ale film, obal to do pole, kvůli korektnímu zobrazení
@@ -75,12 +80,18 @@ var ProgrammeListPage = ATV.Page.create({
           e.watched = History.watched(e.ID)
         }
 
+        var favorite_button
+        if (this.single)
+          favorite_button = Favorites.badge(show_info.ID)
+        else
+          favorite_button = Favorites.badge(show_info.SIDP)
+
         resolve({
-          favoriteButton: favorites.badge(showInfo.ID),
-          watchedButton: History.watchedBadge(showInfo.ID),
+          favoriteButton: favorite_button,
+          watchedButton: History.watchedBadge(show_info.ID),
           details: programmeDetails,
           related: programmeList.related.programme,
-          showInfo: showInfo,
+          showInfo: show_info,
           paging: programmeList.episodes.paging,
           single: this.single,
           episodes: programmeList.episodes.programme
@@ -93,19 +104,25 @@ var ProgrammeListPage = ATV.Page.create({
     doc
       .getElementById('favorite-btn')
       .addEventListener('select', () => {
-        favorites.change(showInfo.title, showInfo.ID)
-        doc.getElementById('favorite-btn').innerHTML = favorites.badge(showInfo.ID)
+        if (this.single) {
+          Favorites.change(show_info.title, 'episode', show_info.ID)
+          doc.getElementById('favorite-btn').innerHTML = Favorites.badge(show_info.ID)
+        }
+        else {
+          Favorites.change(show_info.title, 'show', show_info.SIDP)
+          doc.getElementById('favorite-btn').innerHTML = Favorites.badge(show_info.SIDP)
+        }
       })
 
       if (this.single) {
         doc
           .getElementById('watched-btn')
           .addEventListener('select', () => {
-            if (History.watched(showInfo.ID))
-              History.markUnwatched(showInfo.ID)
+            if (History.watched(show_info.ID))
+              History.markUnwatched(show_info.ID)
             else
-              History.markWatched(showInfo.ID)
-            doc.getElementById('watched-btn').innerHTML = History.watchedBadge(showInfo.ID)
+              History.markWatched(show_info.ID)
+            doc.getElementById('watched-btn').innerHTML = History.watchedBadge(show_info.ID)
           })
       }
   },

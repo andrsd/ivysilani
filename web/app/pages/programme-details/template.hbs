@@ -39,9 +39,15 @@
             <badge src="resource://button-play"/>
             <title>Přehrát</title>
           </buttonLockup>
-          <buttonLockup id="favButton">
+          <buttonLockup id="favorite-btn">
             {{{ favoriteButton }}}
           </buttonLockup>
+          {{#if more_episodes}}
+          <buttonLockup data-href-page="programme-list" data-href-page-options="{{toJSON more_episodes }}">
+            <badge src="resource://list-chevron"/>
+            <title>Další episody</title>
+          </buttonLockup>
+          {{/if}}
         </row>
       </stack>
       <heroImg src="{{{ details.poster_path }}}" style="width: 544;"/>

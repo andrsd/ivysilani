@@ -8,21 +8,22 @@ const favInit = () => {
   }
 }
 
-const change = (title, id) => {
+const change = (title, type, id) => {
   favInit()
   if (isFav(id)) {
     remove(id)
     return false
   } else {
-    add(title, id)
+    add(title, type, id)
     return true
   }
 }
 
-const add = (title, id) => {
+const add = (title, type, id) => {
   let favorites = ATV.Settings.get('favorites')
   favorites.push({
     title: title,
+    type: type,
     ID: id
   })
   favorites.sort((a, b) => a['title'].localeCompare(b['title']))

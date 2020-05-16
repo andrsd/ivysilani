@@ -2,13 +2,13 @@ import ATV from 'atvjs'
 import fastXmlParser from 'fast-xml-parser'
 import template from './template.hbs'
 import API from 'lib/ivysilani.js'
-import favorites from 'lib/favorites.js'
+import Favorites from 'lib/favorites.js'
 
 const FavoritesPage = ATV.Page.create({
   name: 'favorites',
   template,
   ready (options, resolve, reject) {
-    let favs = favorites.get()
+    let favs = Favorites.get()
 
     if (favs.length > 0) {
       var promises = []
@@ -19,7 +19,10 @@ const FavoritesPage = ATV.Page.create({
             .post(API.url.programmeDetails, API.xhrOptions({ ID: value.ID }))
             .then((xhr) => {
               value.showInfo = fastXmlParser.parse(xhr.response).programme
-              console.log(value.showInfo)
+              if (value.type == 'episode')
+                value.target = 'programme-details'
+              else
+                value.target = 'programme-list'
             }))
       })
 

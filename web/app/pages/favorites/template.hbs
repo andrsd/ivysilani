@@ -5,7 +5,7 @@
       <grid>
         <section>
           {{#each favorites }}
-          <lockup data-href-page="programme-list" data-href-page-options="{{toJSON this}}">
+          <lockup data-href-page="{{ target }}" data-href-page-options="{{toJSON this}}">
             <img src="{{fullImageURL showInfo.imageURL}}" style="width:390; height:220;"/>
             <title>{{ title }}</title>
           </lockup>

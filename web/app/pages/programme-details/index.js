@@ -3,13 +3,12 @@ import fastXmlParser from 'fast-xml-parser'
 
 import template from './template.hbs'
 import API from 'lib/ivysilani.js'
-import favorites from 'lib/favorites.js'
+import Favorites from 'lib/favorites.js'
 import TMDB from 'lib/TMDB.js'
 
 const _ = ATV._
 
 let showInfo
-let title
 
 var ProgrammeDetailsPage = ATV.Page.create({
   name: 'programme-details',
@@ -17,38 +16,24 @@ var ProgrammeDetailsPage = ATV.Page.create({
   ready: function (options, resolve, reject) {
     showInfo = options
 
-    title = options.title
-    var m = title.match(/(.+)(:[^:]+)/)
-    if (m != null) {
-      title = m[1]
-    }
-
     Promise
       .all([
-        ATV.Ajax.get(TMDB.url.searchMovie(title)),
-        ATV.Ajax.get(TMDB.url.searchTVShow(title))
+        ATV.Ajax.get(TMDB.url.searchMovie(showInfo.title))
       ])
       .then((res) => {
         let getProgrammeDetails = ATV.Ajax.post(API.url.programmeDetails, API.xhrOptions({ID: options.ID}))
         let getRelatedList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({
           ID: options.ID,
-          'type[0]': 'related'
+          'type[0]': 'episodes',
+          'type[1]': 'related'
         }))
 
-        if ((res[0].response.total_results > 0) && (res[1].response.total_results == 0)) {
+        if (res[0].response.total_results == 1) {
           var id = res[0].response.results[0].id
           return Promise.all([
             getProgrammeDetails,
             getRelatedList,
             ATV.Ajax.get(TMDB.url.movieDetails(id))
-          ])
-        }
-        else if ((res[0].response.total_results == 0) && (res[1].response.total_results > 0)) {
-          var id = res[1].response.results[0].id
-          return Promise.all([
-            getProgrammeDetails,
-            getRelatedList,
-            ATV.Ajax.get(TMDB.url.tvShowDetails(id))
           ])
         }
         else {
@@ -62,7 +47,8 @@ var ProgrammeDetailsPage = ATV.Page.create({
       })
       .then((res) => {
         let ctdetails = fastXmlParser.parse(res[0].response).programme
-        let related = fastXmlParser.parse(res[1].response).programmes.related.programme
+        let programme_list = fastXmlParser.parse(res[1].response).programmes
+        let related = programme_list.related.programme
         var details = {}
         var info = []
         var languages = []
@@ -169,7 +155,7 @@ var ProgrammeDetailsPage = ATV.Page.create({
           }
         }
         else {
-          details.title = ctdetails.title
+          details.title = showInfo.title
           if (_.isEmpty(ctdetails.description)) {
             details.description = 'Tento pořad nemá žádný popisek'
           }
@@ -195,8 +181,18 @@ var ProgrammeDetailsPage = ATV.Page.create({
           })
         }
 
+        var more_episodes
+        if (programme_list.episodes.paging.itemsCount > 1) {
+          more_episodes = {
+            ID: ctdetails.SIDP,
+            title: ctdetails.title,
+            imageURL: ctdetails.imageURL
+          }
+        }
+
         resolve({
-          favoriteButton: favorites.badge(showInfo.ID),
+          favoriteButton: Favorites.badge(showInfo.ID),
+          more_episodes: more_episodes,
           details: details,
           ctdetails: ctdetails,
           info: info,
@@ -208,14 +204,12 @@ var ProgrammeDetailsPage = ATV.Page.create({
       })
   },
   afterReady (doc) {
-    const changeFavorites = () => {
-      favorites.change(title, showInfo.ID)
-      doc.getElementById('favButton').innerHTML = favorites.badge(showInfo.ID)
-    }
-
     doc
-      .getElementById('favButton')
-      .addEventListener('select', changeFavorites)
+      .getElementById('favorite-btn')
+      .addEventListener('select', () => {
+        Favorites.change(showInfo.title, 'episode', showInfo.ID)
+        doc.getElementById('favorite-btn').innerHTML = Favorites.badge(showInfo.ID)
+      })
   }
 })
 
