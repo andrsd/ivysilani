@@ -1,29 +1,37 @@
 import ATV from 'atvjs'
 
-const historyInit = () => {
+const init = () => {
   let history = ATV.Settings.get('history')
   if (history === undefined) {
     history = {}
     ATV.Settings.set('history', history)
   }
+
+  let progress_time = ATV.Settings.get('progress-time')
+  if (progress_time === undefined) {
+    progress_time = {}
+    ATV.Settings.set('progress-time', progress_time)
+  }
 }
 
-const set = (id, value) => {
-  historyInit()
+const markWatched = (id) => {
+  init()
   let history = ATV.Settings.get('history')
-  history[id] = value
+  history[id] = 1
   ATV.Settings.set('history', history)
+  removeProgressTime(id)
 }
 
-const remove = (id) => {
-  historyInit()
+const markUnwatched = (id) => {
+  init()
   let history = ATV.Settings.get('history')
   delete history[id]
   ATV.Settings.set('history', history)
+  removeProgressTime(id)
 }
 
 const watched = (id) => {
-  historyInit()
+  init()
   let history = ATV.Settings.get('history')
   if (id in history)
     return history[id]
@@ -31,8 +39,47 @@ const watched = (id) => {
     return 0
 }
 
+const setProgressTime = (id, time) => {
+  init()
+  let progress_time = ATV.Settings.get('progress-time')
+  progress_time[id] = time
+  ATV.Settings.set('progress-time', progress_time)
+
+  let history = ATV.Settings.get('history')
+  history[id] = 0.5
+  ATV.Settings.set('history', history)
+}
+
+const progressTime = (id) => {
+  init()
+  let progress_time = ATV.Settings.get('progress-time')
+  if (id in progress_time)
+    return progress_time[id]
+  else
+    return 0
+}
+
+const removeProgressTime = (id) => {
+  init()
+  let progress_time = ATV.Settings.get('progress-time')
+  delete progress_time[id]
+  ATV.Settings.set('progress-time', progress_time)
+}
+
+const watchedBadge = (id) => {
+  if (watched(id)) {
+    return '<badge src="resource://button-checkmark" /><title>Viděno</title>'
+  }
+  else {
+    return '<badge src="resource://button-checkmark" /><title>Neviděno</title>'
+  }
+}
+
 export default {
-  set,
-  remove,
-  watched
+  markWatched,
+  markUnwatched,
+  watched,
+  watchedBadge,
+  progressTime,
+  setProgressTime
 }

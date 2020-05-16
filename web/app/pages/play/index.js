@@ -50,7 +50,7 @@ const PlayPage = ATV.Page.create({
             player.playlist = tvosPlaylist
 
             player.addEventListener('timeDidChange', function(info) {
-              History.set(programme_id, info.time)
+              History.setProgressTime(programme_id, info.time)
             }, {
               interval: 1
             })
@@ -59,8 +59,9 @@ const PlayPage = ATV.Page.create({
 
         var watched = History.watched(programme_id)
 
-        if ((watched > 0) && (watched < (options.footage * 60 - 5))) {
-          var time = new Date(watched * 1000).toISOString('H:mm:ss').substr(11, 8)
+        if ((watched > 0) && (watched < 0.99)) {
+          var progressTime = History.progressTime(programme_id)
+          var time = new Date(progressTime * 1000).toISOString('H:mm:ss').substr(11, 8)
 
           var doc = ATV.Navigation.presentModal({
             template: template,
@@ -77,7 +78,7 @@ const PlayPage = ATV.Page.create({
           doc
             .getElementById('resume-btn')
             .addEventListener('select', () => {
-              player.seekToTime(watched)
+              player.seekToTime(progressTime)
               player.play()
             })
         }

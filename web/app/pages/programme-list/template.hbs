@@ -29,8 +29,11 @@
             <badge src="resource://button-play"/>
             <title>Přehrát</title>
           </buttonLockup>
-          <buttonLockup id="favButton">
+          <buttonLockup id="favorite-btn">
             {{{ favoriteButton }}}
+          </buttonLockup>
+          <buttonLockup id="watched-btn">
+            {{{ watchedButton }}}
           </buttonLockup>
         </row>
       </stack>
@@ -58,7 +61,7 @@
           <heroImg src="{{fullImageURL showInfo.imageURL}}" />
           <description id="description" style="tv-text-max-lines: 2"></description>
           <row>
-            <buttonLockup id="favButton" style="tv-position: right; margin-left: 100">
+            <buttonLockup id="favorite-btn" style="tv-position: right; margin-left: 100">
               {{{ favoriteButton }}}
             </buttonLockup>
           </row>

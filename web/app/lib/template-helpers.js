@@ -30,10 +30,12 @@ const helpers = {
       return "&#9686;"
     else
       return "&#8194;"
-  },
+  }
 }
 
 // register all helpers
 _.each(helpers, (fn, name) => Handlebars.registerHelper(name, fn))
 
-export default helpers
+export default {
+  helpers
+}
