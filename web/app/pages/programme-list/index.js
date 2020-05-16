@@ -22,7 +22,11 @@ var ProgrammeListPage = ATV.Page.create({
     let currentPage
     let pageSize = 20
     if ('paging' in options) { currentPage = options.paging.nextPage } else { currentPage = '1' }
-    showInfo = options
+    if ('showInfo' in options)
+      // got here via paging
+      showInfo = options.showInfo
+    else
+      showInfo = options
 
     let getProgrammeList = ATV.Ajax.post(API.url.programmeList, API.xhrOptions({
         ID: showInfo.ID,
