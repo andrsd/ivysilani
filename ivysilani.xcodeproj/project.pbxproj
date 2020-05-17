@@ -76,7 +76,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		020F3F9324684502003D8180 /* ivysilani.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ivysilani.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		020F3F9324684502003D8180 /* iVysílání.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iVysílání.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		020F3F9624684502003D8180 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		020F3F9924684503003D8180 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		020F3F9C24684503003D8180 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 		020F3F9424684502003D8180 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				020F3F9324684502003D8180 /* ivysilani.app */,
+				020F3F9324684502003D8180 /* iVysílání.app */,
 				020F3FAF24684733003D8180 /* GCDWebServers.framework */,
 			);
 			name = Products;
@@ -290,7 +290,7 @@
 			);
 			name = ivysilani;
 			productName = ivysilani;
-			productReference = 020F3F9324684502003D8180 /* ivysilani.app */;
+			productReference = 020F3F9324684502003D8180 /* iVysílání.app */;
 			productType = "com.apple.product-type.application";
 		};
 		020F3FAE24684733003D8180 /* GCDWebServers */ = {
@@ -547,6 +547,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y8G529976F;
 				INFOPLIST_FILE = ivysilani/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -554,7 +555,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = name.andrs.tvos.ivysilani;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iVysílání";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
@@ -565,6 +566,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Y8G529976F;
 				INFOPLIST_FILE = ivysilani/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -572,7 +574,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = name.andrs.tvos.ivysilani;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "iVysílání";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
