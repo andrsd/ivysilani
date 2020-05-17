@@ -131,10 +131,10 @@ var ProgrammeListPage = ATV.Page.create({
     let elementType = element.nodeName
 
     if (elementType === 'listItemLockup') {
-      var ph = element.getElementsByTagName("placeholder").item(0)
-
+      var programme = JSON.parse(element.getAttribute("data-href-page-options"))
       var doc = getActiveDocument()
-      doc.getElementById('description').innerHTML = ph.innerHTML
+      doc.getElementById('ep-img').setAttribute("src", programme.imageURL)
+      doc.getElementById('description').innerHTML = programme.synopsis
     }
   },
   onHoldSelect(e) {

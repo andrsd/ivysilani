@@ -58,7 +58,7 @@
     <list>
       <relatedContent>
         <itemBanner>
-          <heroImg src="{{fullImageURL showInfo.imageURL}}" />
+          <heroImg id="ep-img" src="{{fullImageURL showInfo.imageURL}}" />
           <description id="description" style="tv-text-max-lines: 2"></description>
           <row>
             <buttonLockup id="favorite-btn">
@@ -75,7 +75,6 @@
         <listItemLockup data-href-page="play" data-href-page-options="{{toJSON this }}">
           <ordinal minLength="2">{{{watchedState watched }}}</ordinal>
           <title>{{ title }}</title>
-          <placeholder>{{ synopsis }}</placeholder>
         </listItemLockup>
         {{/each}}
       </section>
