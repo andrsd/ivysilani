@@ -1,0 +1,11 @@
+language: objective-c
+osx_image: xcode11.3
+script:
+- xcodebuild clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO CODE_SIGNING_ALLOWED=NO
+
+install:
+- npm run install-deps
+
+branches:
+  only:
+  - master
