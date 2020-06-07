@@ -131,10 +131,18 @@ var ProgrammeListPage = ATV.Page.create({
     let elementType = element.nodeName
 
     if (elementType === 'listItemLockup') {
-      var programme = JSON.parse(element.getAttribute("data-href-page-options"))
       var doc = getActiveDocument()
-      doc.getElementById('ep-img').setAttribute("src", programme.imageURL)
-      doc.getElementById('description').innerHTML = programme.synopsis
+      var data_href = element.getAttribute("data-href-page")
+
+      if (data_href == "play") {
+        var programme = JSON.parse(element.getAttribute("data-href-page-options"))
+        doc.getElementById('ep-img').setAttribute("src", programme.imageURL)
+        doc.getElementById('description').innerHTML = programme.synopsis
+      }
+      else {
+        doc.getElementById('ep-img').setAttribute("src", " ")
+        doc.getElementById('description').innerHTML = " "
+      }
     }
   },
   onHoldSelect(e) {

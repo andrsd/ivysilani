@@ -71,5 +71,6 @@ export default {
   change,
   isFav,
   badge,
-  get
+  get,
+  remove
 }

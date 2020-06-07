@@ -1,5 +1,5 @@
 .appLogo {
-    width:290; 
+    width:290;
     height:60;
     tv-align: center;
 }
@@ -27,6 +27,10 @@
 .tile_large {
     width: 334;
     height: 501;
+}
+.tile-wide {
+    width: 1500;
+    height: 550;
 }
 
 .darkBackgroundColor {

@@ -1,17 +1,18 @@
 <document>
     <stackTemplate>
         <collectionList>
-            <shelf style="margin-top: 595">
+            <carousel>
                 <section>
                     {{#each tipsMain }}
                     <lockup data-href-page="programme-details" data-href-page-options="{{toJSON this }}">
-                        <img src="{{ fullImageURL imageURL }}" class="tile" />
-                        <title style="align: left">{{ title }}</title>
-                        <subtitle style="align: left">{{ note }}</subtitle>
+                        <img src="{{ fullImageURL imageURL }}" class="tile-wide" />
+                        <overlay>
+                          <title>{{ title }}</title>
+                        </overlay>
                     </lockup>
                     {{/each}}
                 </section>
-            </shelf>
+            </carousel>
             <shelf>
                 <header>
                   <title>Nejsledovanější videa dne</title>
