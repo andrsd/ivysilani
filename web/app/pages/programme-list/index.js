@@ -64,38 +64,50 @@ var ProgrammeListPage = ATV.Page.create({
         if (programmeList.episodes.paging.pagesCount === 1) {
           delete programmeList.episodes.paging
         }
-        // U některých pořadů má iVysílání chybu -> ukazuje, že je více stránek,
-        // přitom další už je prázdná
-        if (programmeList.episodes.programme.length < page_size) {
-          delete programmeList.episodes.paging
-        }
-        // Pokud to není seriál ale film, obal to do pole, kvůli korektnímu zobrazení
-        // Kvuli konverzti XML -> JSON. fastXMLParser hodí jednu epizodu jako child, ne jako pole
-        if (!(programmeList.episodes.programme.constructor === Array)) {
-          programmeList.episodes.programme = [programmeList.episodes.programme]
-        }
 
-        this.single = programmeList.episodes.programme.length == 1
-        for (var e of programmeList.episodes.programme) {
-          e.watched = History.watched(e.ID)
+        if ('programme' in programmeList.episodes) {
+          // U některých pořadů má iVysílání chybu -> ukazuje, že je více stránek,
+          // přitom další už je prázdná
+          if (programmeList.episodes.programme.length < page_size) {
+            delete programmeList.episodes.paging
+          }
+          // Pokud to není seriál ale film, obal to do pole, kvůli korektnímu zobrazení
+          // Kvuli konverzti XML -> JSON. fastXMLParser hodí jednu epizodu jako child, ne jako pole
+          if (!(programmeList.episodes.programme.constructor === Array)) {
+            programmeList.episodes.programme = [programmeList.episodes.programme]
+          }
+
+          this.single = programmeList.episodes.programme.length == 1
+          for (var e of programmeList.episodes.programme) {
+            e.watched = History.watched(e.ID)
+          }
+
+          var favorite_button
+          if (this.single)
+            favorite_button = Favorites.badge(show_info.ID)
+          else
+            favorite_button = Favorites.badge(show_info.SIDP)
+
+          resolve({
+            favoriteButton: favorite_button,
+            watchedButton: History.watchedBadge(show_info.ID),
+            details: programmeDetails,
+            related: programmeList.related.programme,
+            showInfo: show_info,
+            paging: programmeList.episodes.paging,
+            single: this.single,
+            episodes: programmeList.episodes.programme
+          })
         }
-
-        var favorite_button
-        if (this.single)
-          favorite_button = Favorites.badge(show_info.ID)
-        else
-          favorite_button = Favorites.badge(show_info.SIDP)
-
-        resolve({
-          favoriteButton: favorite_button,
-          watchedButton: History.watchedBadge(show_info.ID),
-          details: programmeDetails,
-          related: programmeList.related.programme,
-          showInfo: show_info,
-          paging: programmeList.episodes.paging,
-          single: this.single,
-          episodes: programmeList.episodes.programme
-        })
+        else {
+          ATV.Navigation.showError({
+            data: {
+              title: 'Chyba',
+              message: 'Pořad není v iVysílání dostupný'
+            },
+            type: 'document'
+          })
+        }
       }, (xhr) => {
         reject()
       })
