@@ -26,7 +26,7 @@ const helpers = {
   watchedState (state) {
     if (state == 0)
       return "&#9673;"
-    else if (state < 1)
+    else if (state < 0.9)
       return "&#9686;"
     else
       return "&#8194;"

@@ -39,14 +39,14 @@ const watched = (id) => {
     return 0
 }
 
-const setProgressTime = (id, time) => {
+const setProgressTime = (id, time, duration) => {
   init()
   let progress_time = ATV.Settings.get('progress-time')
   progress_time[id] = time
   ATV.Settings.set('progress-time', progress_time)
 
   let history = ATV.Settings.get('history')
-  history[id] = 0.5
+  history[id] = time / duration
   ATV.Settings.set('history', history)
 }
 
