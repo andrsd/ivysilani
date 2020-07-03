@@ -51,7 +51,7 @@ const PlayPage = ATV.Page.create({
               player.playlist = tvosPlaylist
 
               player.addEventListener('timeDidChange', function(info) {
-                History.setProgressTime(programme_id, info.time)
+                History.setProgressTime(programme_id, info.time, value.duration)
               }, {
                 interval: 1
               })
