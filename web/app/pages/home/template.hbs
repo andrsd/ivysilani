@@ -85,7 +85,7 @@
               <section>
                 {{#each schedule }}
                 <lockup data-href-page="dates-date" data-href-page-options="{{toJSON this }}">
-                  <img src="" style="width:225; height:135;"/>
+                  <img src="{{ asset_url 'img/tv.png' }}" style="width:225; height:135;"/>
                   <title>{{ short_title }}</title>
                 </lockup>
                 {{/each}}
