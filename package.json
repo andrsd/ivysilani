@@ -1,6 +1,6 @@
 {
   "name": "ivysilani-tvos",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Neoficiální klient iVysílání pro Apple TV s použitím atvjs",
   "main": "index.js",
   "scripts": {
@@ -8,12 +8,12 @@
     "build": "webpack --progress",
     "serve": "webpack-dev-server",
     "dist": "NODE_ENV=production webpack --progress",
-    "test": "./node_modules/.bin/mocha test --timeout 0 --exit",
-    "coverage": "npx nyc --reporter=json npm test"
+    "test": "./node_modules/.bin/mocha test --timeout 0 --exit --require @babel/register",
+    "coverage": "npx nyc --reporter=html npm test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marhycz/ivysilani_tvOS.git"
+    "url": "git+https://github.com/andrsd/ivysilani.git"
   },
   "keywords": [
     "appletv",
@@ -25,15 +25,16 @@
     "tvmlkit",
     "ivysilani"
   ],
-  "author": "Michal Marhan",
+  "author": "David Andrš",
   "license": "",
   "bugs": {
-    "url": "https://github.com/marhycz/ivysilani_tvOS/issues"
+    "url": "https://github.com/andrsd/ivysilani/issues"
   },
-  "homepage": "https://github.com/marhycz/ivysilani_tvOS#readme",
+  "homepage": "https://github.com/andrsd/ivysilani#readme",
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
+    "@babel/register": "^7.10.4",
     "babel-loader": "^8.0.6",
     "chai": "^4.2.0",
     "codecov": "^3.7.0",
@@ -56,11 +57,5 @@
     "atvjs": "^0.2.9",
     "fast-xml-parser": "^3.12.16",
     "handlebars": "^4.7.6"
-  },
-  "nyc": {
-    "all": true,
-    "include": [
-      "web/app/**/*.js"
-    ]
   }
 }
