@@ -15,6 +15,7 @@ import LivePage from 'pages/live'
 
 import AlphabetLetterPage from 'pages/alphabet-letter'
 import DatesDatePage from 'pages/dates-date'
+import GenreProgrammeListPage from 'pages/genre-programme-list'
 import ProgrammeListPage from 'pages/programme-list'
 
 import ProgrammeDetailsPage from 'pages/programme-details'

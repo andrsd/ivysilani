@@ -92,6 +92,21 @@
               </section>
             </shelf>
             <shelf>
+              <section>
+                  <header>
+                    <title>Žánry</title>
+                  </header>
+                  {{#each genres }}
+                  <lockup data-href-page="genre-programme-list" data-href-page-options="{{toJSON this }}">
+                      <img src="" style="width:320; height:75"/>
+                      <overlay style="tv-position: footer; tv-align: left; padding: 0 0 15 30">
+                        <title>{{ title }}</title>
+                      </overlay>
+                  </lockup>
+                  {{/each}}
+              </section>
+            </shelf>
+            <shelf>
                 <section>
                     <header>
                       <title>Pořady podle abecedy</title>
