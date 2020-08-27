@@ -34,18 +34,18 @@ export const alphabet = [
 ]
 
 export const genres = [
-  { title: 'Filmy', link: 'filmy', poster_path: 'img/alphabet/a.png' },
-  { title: 'Seriály', link: 'serialy', poster_path: 'img/alphabet/b.png' },
-  { title: 'Dokumenty', link: 'dokumenty', poster_path: 'img/alphabet/c.png' },
-  { title: 'Sport', link: 'sportovni', poster_path: 'img/alphabet/č.png' },
-  { title: 'Hudba', link: 'hudebni', poster_path: 'img/alphabet/d.png' },
-  { title: 'Zábava', link: 'zabavne', poster_path: 'img/alphabet/e.png' },
-  { title: 'Děti a mládež', link: 'deti', poster_path: 'img/alphabet/f.png' },
-  { title: 'Vzdělávání', link: 'vzdelavaci', poster_path: 'img/alphabet/g.png' },
-  { title: 'Zpravodajství', link: 'zpravodajske', poster_path: 'img/alphabet/h.png' },
-  { title: 'Publicistika', link: 'publicisticke', poster_path: 'img/alphabet/ch.png' },
-  { title: 'Magazíny', link: 'magaziny', poster_path: 'img/alphabet/i.png' },
-  { title: 'Náboženství', link: 'nabozenske', poster_path: 'img/alphabet/j.png' }
+  { title: 'Filmy', link: 'filmy' },
+  { title: 'Seriály', link: 'serialy' },
+  { title: 'Dokumenty', link: 'dokumenty' },
+  { title: 'Sport', link: 'sportovni' },
+  { title: 'Hudba', link: 'hudebni' },
+  { title: 'Zábava', link: 'zabavne' },
+  { title: 'Děti a mládež', link: 'deti' },
+  { title: 'Vzdělávání', link: 'vzdelavaci' },
+  { title: 'Zpravodajství', link: 'zpravodajske' },
+  { title: 'Publicistika', link: 'publicisticke' },
+  { title: 'Magazíny', link: 'magaziny' },
+  { title: 'Náboženství', link: 'nabozenske' }
 ]
 
 export default {

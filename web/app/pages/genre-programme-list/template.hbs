@@ -1,0 +1,22 @@
+<document>
+    <listTemplate>
+        <banner>
+            <title>{{ genre.title }}</title>
+        </banner>
+        <list>
+            <section>
+                {{#each shows }}
+                <listItemLockup data-href-page="programme-list" data-href-page-options="{{toJSON this}}">
+                    <title>{{ title }}</title>
+                    <relatedContent>
+                        <lockup>
+                            <img src="{{ fullImageURL imageURL }}"/>
+                            <description>{{ synopsis }}</description>
+                        </lockup>
+                    </relatedContent>
+                </listItemLockup>
+                {{/each}}
+            </section>
+        </list>
+    </listTemplate>
+</document>
