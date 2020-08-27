@@ -1,0 +1,12 @@
+<collectionList style="padding-top: 30; margin-top: -30">
+  <grid>
+    <section>
+      {{#each results}}
+      <lockup data-href-page="programme-list" data-href-page-options="{{toJSON this }}">
+        <img src="{{ fullImageURL imageURL }}" width="306" height="202"/>
+        <title>{{ title }}</title>
+      </lockup>
+      {{/each}}
+    </section>
+  </grid>
+</collectionList>

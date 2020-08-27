@@ -12,6 +12,7 @@ import errorTpl from 'shared/templates/error.hbs'
 import HomePage from 'pages/home'
 import FavoritesPage from 'pages/favorites'
 import LivePage from 'pages/live'
+import SearchPage from 'pages/search'
 
 import AlphabetLetterPage from 'pages/alphabet-letter'
 import DatesDatePage from 'pages/dates-date'
@@ -38,6 +39,11 @@ ATV.start({
       id: 'live',
       name: 'Živé vysílání',
       page: LivePage,
+      attributes: { reloadOnSelect: true }
+    },{
+      id: 'search',
+      name: 'Hledat',
+      page: SearchPage,
       attributes: { reloadOnSelect: true }
     }]
   },
