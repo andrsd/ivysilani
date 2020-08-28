@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/andrsd/ivysilani.svg?branch=master)](https://travis-ci.org/andrsd/ivysilani)
 [![codecov](https://codecov.io/gh/andrsd/ivysilani/branch/master/graph/badge.svg)](https://codecov.io/gh/andrsd/ivysilani)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://andrsd.mit-license.org/)
 
 Aplikace pro sledování iVysílání na Apple TV
 
