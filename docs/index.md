@@ -1,4 +1,38 @@
-Aplikace pro sledování iVysílání na Apple TV
+## Aplikace umožňuje
+
+* Přehrávání obsahu iVysílání
+* Uložit pořady do oblíbených
+* Listovat televizním programem pro jednotlivé dny
+* Vylistovat pořady podle jména nebo žánry
+* Vyhledávat pořady podle jména
+* Zobrazit informace o filmech z [TMDB.org](https://www.themoviedb.org/)
+* Automaticky označovat shlédnuté pořady jako již viděné
+* Sledovat živé vysílání
+
+## Ukázky aplikace
+
+{% include image.html url="img/home-screen-1.png" description="Domácí stránka" %}
+
+{% include image.html url="img/home-screen-2.png" description="Domácí stránka" %}
+
+{% include image.html url="img/live.png" description="Živé vysílání" %}
+
+{% include image.html url="img/search.png" description="Vyhledávaní" %}
+
+
+{% include image.html url="img/list-letter.png" description="Seznam pořadů podle abecedy" %}
+
+{% include image.html url="img/list-genre.png" description="Seznam pořadů podle žánru" %}
+
+{% include image.html url="img/tv-schedule.png" description="Televizní program" %}
+
+
+{% include image.html url="img/show-detail-1.png" description="Detail pořadu" %}
+
+{% include image.html url="img/show-detail-2.png" description="Detail pořadu (herci)" %}
+
+{% include image.html url="img/tv-show-episodes.png" description="Episody pořadu/seriálu" %}
+
 
 ## Různé
 
