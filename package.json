@@ -56,6 +56,6 @@
   "dependencies": {
     "atvjs": "^0.2.9",
     "fast-xml-parser": "^3.12.16",
-    "handlebars": "^4.7.6"
+    "handlebars": "^4.7.7"
   }
 }
