@@ -1,6 +1,6 @@
 # ivysilani
 
-[![Build Status](https://travis-ci.org/andrsd/ivysilani.svg?branch=main)](https://travis-ci.org/andrsd/ivysilani)
+[![Build Status](https://travis-ci.com/andrsd/ivysilani.svg?branch=main)](https://travis-ci.com/andrsd/ivysilani)
 [![codecov](https://codecov.io/gh/andrsd/ivysilani/branch/main/graph/badge.svg)](https://codecov.io/gh/andrsd/ivysilani)
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://andrsd.mit-license.org/)
 
